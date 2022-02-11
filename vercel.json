@@ -1,0 +1,40 @@
+{
+   "routes": [
+       {
+           "src": "/",
+           "dest": "/"
+       },
+       {
+           "src": "/signin",
+           "dest": "/"
+       },
+       {
+           "src": "/signup",
+           "dest": "/"
+       },
+       {
+           "src": "/admin",
+           "dest": "/"
+       },
+       {
+           "src": "/admin/users",
+           "dest": "/"
+       },
+       {
+           "src": "/admin/users/add",
+           "dest": "/"
+       },
+       {
+           "src": "/admin/users/(.*)/edit",
+           "dest": "/"
+       },
+       {
+         "src": "/product",
+         "dest": "/"
+       },
+       {
+         "src": "/product/(.*)",
+         "dest": "/"
+       }
+   ]
+}
