@@ -25,7 +25,7 @@ router.on({
    "/admin": () => AdminRender(DashboardPage),
    "/admin/users": () => AdminRender(UserList),
    "/admin/users/add": () => AdminRender(UserAdd),
-   "/admin/news/:id/edit": ({ data }) => AdminRender(UserEdit, data.id),
+   "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data.id),
 }).resolve();
 
 

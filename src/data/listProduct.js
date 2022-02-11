@@ -6,7 +6,7 @@ export const listProduct = [
       price: "8000 VND",
       size: ["XL","XXL","L","M","S"],
       short_description: "adfsfjsdg",
-      description: "The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway. Need to add an extra pop of color to your outfit? Our white tee has you covered.",
+      description: " Our white tee has you covered.",
       color: "bg-green-700",
       image: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
    }, 

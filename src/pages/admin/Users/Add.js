@@ -11,7 +11,7 @@ const UserAdd = {
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="lg:flex lg:items-center lg:justify-between">
             <div class="flex-1 min-w-0">
-               <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Thêm Mới user</h2>
+               <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Thêm Mới User</h2>
             </div>
             <div class="mt-5 flex lg:mt-0 lg:ml-4">
                <a href="/admin/users" class="sm:ml-3">

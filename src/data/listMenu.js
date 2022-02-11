@@ -43,6 +43,6 @@ export const AdMenuList = [
    {
       name: "Products",
       src:"/admin/products"
-   }
+   },
    
 ]
