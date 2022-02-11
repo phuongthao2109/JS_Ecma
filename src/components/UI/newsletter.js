@@ -15,7 +15,7 @@ const NewsLetter = () =>{
             </div>
             </div>
             <div class="lg:w-2/5 w-full lg:flex lg:flex-row hidden">
-            <img src="./src/asset/Banner/subscribe-banner.png" class="h-96" />
+            <img src="../../asset/Banner/subscribe-banner.png" class="h-96" />
             </div>
       </div>
        `;
