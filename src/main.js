@@ -9,6 +9,7 @@ import DashboardPage from "./pages/admin/dashboard";
 import UserList from "./pages/admin/Users/List";
 import UserAdd from "./pages/admin/Users/Add";
 import UserEdit from "./pages/admin/Users/Edit";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const router = new Navigo("/", { linksSelector: "a" });
 router.on({
@@ -26,8 +27,9 @@ router.on({
    "/admin/users": () => AdminRender(UserList),
    "/admin/users/add": () => AdminRender(UserAdd),
    "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data.id),
-}).resolve();
-
+});
+router.notFound(() => NoLayout(NotFoundPage));
+router.resolve();
 
 
 
