@@ -1,4 +1,4 @@
-const Cart = {
+const Cart ={
    render(){
       return /*html*/`
          <a href="#" class="bg-purple-600 text-gray-50 hover:bg-purple-700 p-3 px-3 sm:px-5 rounded-full">
@@ -12,6 +12,4 @@ const Cart = {
       `
    }
 }
-export default Cart
-
-//chưa sd
+export default Cart;

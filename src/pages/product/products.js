@@ -1,11 +1,11 @@
 import { listProduct } from "../../data";
 import { setTitle } from "../../utils";
 const News = {
-    before_render() {
-        setTitle("Sản Phẩm");
-    },
-    render() {
-        return /* html */ `
+  before_render() {
+    setTitle("Sản Phẩm");
+  },
+  render() {
+    return /* html */ `
         <div class="my-20">
         <div class="flex flex-row justify-between my-5">
           <h2 class="text-3xl">Men's Collection</h2>
@@ -13,13 +13,12 @@ const News = {
       <div class="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
         ${this.newsMapping}
         `;
-    },
-    after_render() {},
-    newsMapping: listProduct
-        .map((item) => {
-            return /* html */ `
-              
-                <div class="shadow-lg rounded-lg">
+  },
+  after_render() { },
+  newsMapping: listProduct
+    .map((item) => {
+      return /* html */ `
+                <div class="shadow-lg rounded-lg mb-10">
                 <a href="/product/${item.slug}">
                   <img src="${item.image}" class="rounded-tl-lg rounded-tr-lg" />
                 </a>
@@ -49,8 +48,8 @@ const News = {
                 </div>
               </div>
             `;
-        })
-        .join(""),
+    })
+    .join(""),
 };
 
 export default News;
