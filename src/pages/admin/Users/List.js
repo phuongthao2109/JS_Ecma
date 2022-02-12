@@ -1,3 +1,4 @@
+// import {getAllUsers} from "../../../api/users";
 import { listProduct } from "../../../data";
 import { setTitle } from "../../../utils";
 
@@ -19,7 +20,7 @@ const UserList = {
       };
     });
   },
-  newsMapping() {
+  usersMapping() {
     return this.state.listProduct
       .map((item, key) => {
         return /* html */ `
@@ -94,10 +95,8 @@ const UserList = {
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                             <tr>
-                              ${this.newsMapping()}
+                              ${this.usersMapping()}
                             </tr>
-                
-                            <!-- More people... -->
                           </tbody>
                             </table>
                         </div>

@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "createdAt": "2022-02-12T07:55:37.741Z",
+      "name": "Nellie Lindgren",
+      "avatar": "https://cdn.fakercloud.com/avatars/tom_even_128.jpg",
+      "id": "1"
+    },
+    {
+      "createdAt": "2022-02-11T19:49:48.281Z",
+      "name": "Mrs. Jordan Hauck",
+      "avatar": "https://cdn.fakercloud.com/avatars/elbuscainfo_128.jpg",
+      "id": "2"
+    },
+    {
+      "createdAt": "2022-02-11T23:40:27.549Z",
+      "name": "Latoya Kerluke",
+      "avatar": "https://cdn.fakercloud.com/avatars/themrdave_128.jpg",
+      "id": "3"
+    },
+    {
+      "createdAt": "2022-02-11T15:31:42.580Z",
+      "name": "Jon Heaney",
+      "avatar": "https://cdn.fakercloud.com/avatars/necodymiconer_128.jpg",
+      "id": "4"
+    }
+  ]
+}
