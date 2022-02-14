@@ -8,7 +8,7 @@ const UserList = {
   async usersMapping() {
     let usersHtml = "";
     try {
-      const users = await ApiGet("http://localhost:3001/users");
+      const users = await ApiGet("https://61e7a9b5e32cd90017acbc23.mockapi.io/users");
       usersHtml = users
         .map((item, key) => {
           console.log(item);

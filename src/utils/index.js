@@ -21,11 +21,12 @@ export const NoLayout = (component, params) => {
    document.getElementById("app").innerHTML = component.render();
 }
 
+
+//API
 export const ApiGet = async (url) => {
    const response = await fetch(url);
    return response.json();
 };
-
 
 export const ApiPost = async (url, body) => {
    const params = {

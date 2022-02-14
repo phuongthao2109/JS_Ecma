@@ -26,14 +26,10 @@ router.on({
    "/admin": () => AdminRender(DashboardPage),
    "/admin/users": () => AdminRender(UserList),
    "/admin/users/add": () => AdminRender(UserAdd),
-   "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data.id),
+   "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data),
 });
 router.notFound(() => NoLayout(NotFoundPage));
 router.resolve();
-
-// fetch("https://61e7a9b5e32cd90017acbc23.mockapi.io/users")
-//    .then((response) => response.json())
-//    .then((data) => console.log(data))
 
 
 

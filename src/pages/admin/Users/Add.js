@@ -87,7 +87,7 @@ const UserAdd = {
                 status: formAddUsers.status.value,
                 address: formAddUsers.address.value,
             };
-            let dataSave = await ApiPost("http://localhost:3001/users", params);
+            let dataSave = await ApiPost("https://61e7a9b5e32cd90017acbc23.mockapi.io/users", params);
             console.log(dataSave);
             formAddUsers.reset();
             alert("Add success");
