@@ -1,4 +1,4 @@
-import { setTitle, reRender } from "../../../utils";
+import { setTitle, reRenderAdmin } from "../../../utils";
 import { getAllUsers, deleteUsersByID } from "../../../api/users";
 
 const UserList = {
@@ -10,8 +10,7 @@ const UserList = {
         const confirm = window.confirm('Are you sure you want to delete?');
         if (confirm) {
           await deleteUsersByID(id).then(() => {
-            console.log("delete successfully");
-            reRender(UserList, "#app")
+            reRenderAdmin(UserList, "#app")
           });
         }
       }
@@ -41,7 +40,7 @@ const UserList = {
 
           </div>
           <td class="px-6 py-4 whitespace-nowrap">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.size}</span>
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.status}</span>
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
 
@@ -92,8 +91,8 @@ const UserList = {
                             <table class="min-w-full divide-y divide-gray-200">
                               <thead class="bg-gray-50">
                               <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Info</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
                                 <th scope="col" class="relative px-6 py-3">
@@ -114,7 +113,8 @@ const UserList = {
         `;
   },
   before_render() {
-    setTitle("List News")
+    setTitle("List News");
+    
   }
 };
 

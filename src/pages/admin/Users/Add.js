@@ -80,7 +80,6 @@ const UserAdd = {
         const buttonSave = document.querySelector("#btn-save-users");
         buttonSave.onclick = async function () {
             let params = {
-                title: formAddUsers.title.value,
                 name: formAddUsers.name.value,
                 email: formAddUsers.email.value,
                 image: formAddUsers.image.value,

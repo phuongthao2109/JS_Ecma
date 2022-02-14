@@ -20,9 +20,9 @@ export const NoLayout = (component, params) => {
    component.before_render(params);
    document.getElementById("app").innerHTML = component.render();
 }
-export const reRender = async (component, domElement) => {
+export const reRenderAdmin = async (component, domElement) => {
    if(component){
-       document.querySelector(domElement).innerHTML = await component.render();
+       document.querySelector(domElement).innerHTML = AdminLayout(await component.render());
        if (component.afterRender) component.afterRender();
    }
  };
