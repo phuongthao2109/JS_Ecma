@@ -24,5 +24,11 @@ Kế hoạch theo ngày :
      + dựng lại layout UI/shop 
      + tìm hiểu chức năng lọc filter sản phẩm 
      + tìm hiểu về đăng nhâhp, đăng kí băng gg và github
+     + làm phần tìm kiếm search 
+     
+16/02:
++ làm xong thêm, sửa , xóa của products
++làm phần sản phẩm cùng danh mục, sp liên quan
+
 
 ====>> làm theo đúng kế hoạch không học lại thì bỏ mẹ nhé !!!!!!!!!!!!!!!!!!!!!
