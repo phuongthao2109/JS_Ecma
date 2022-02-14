@@ -7,3 +7,4 @@ const Axios = axios.create({
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 export default Axios;
+

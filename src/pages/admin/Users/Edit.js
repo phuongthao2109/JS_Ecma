@@ -11,7 +11,7 @@ const UserEdit = {
         setTitle(`Edit: ${this.state.data.name}`);
     },
     render() {
-        const { name, email, image, id, role, address } = this.state.data;
+        const { name, email, image, id, role, address,status } = this.state.data;
         return /*html*/ `  
       <header class="bg-white shadow">
          <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">
@@ -75,8 +75,8 @@ const UserEdit = {
                   </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Status</label>
-                      <input type="text" name="status" value="${status}" class="mt-1 block w-full py-name="status" value="" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  </div>
+                      <input type="text" name="status" value="${status}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Address</label>
                       <textarea rows="10" name="address" class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com">${address}</textarea>
@@ -104,7 +104,7 @@ const UserEdit = {
         const formEditUsers = document.querySelector("#formEditUsers");
         const buttonSave = document.querySelector("#btn-save-users");
         buttonSave.onclick = async function () {
-            let params = { 
+            let params = {
                 name: formEditUsers.name.value,
                 email: formEditUsers.email.value,
                 image: formEditUsers.image.value,

@@ -26,33 +26,3 @@ export const reRenderAdmin = async (component, domElement) => {
        if (component.afterRender) component.afterRender();
    }
  };
-
-//API
-export const ApiGet = async (url) => {
-   const response = await fetch(url);
-   return response.json();
-};
-
-export const ApiPost = async (url, body) => {
-   const params = {
-      method: "POST",
-      headers: {
-         "content-type": "application/json",
-      },
-      body: JSON.stringify(body),
-   };
-   const response = await fetch(url, params);
-   return response.json();
-};
-
-export const ApiPut = async (url, body) => {
-   const params = {
-      method: "PUT",
-      headers: {
-         "content-type": "application/json",
-      },
-      body: JSON.stringify(body),
-   };
-   const response = await fetch(url, params);
-   return response.json();
-};

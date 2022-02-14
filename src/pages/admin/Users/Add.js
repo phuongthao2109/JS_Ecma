@@ -1,6 +1,6 @@
-import { setTitle } from "../../../utils";
+import { setTitle,reRenderAdmin } from "../../../utils";
 import { createUsers } from "../../../api/users";
-
+import axios from "axios";
 const UserAdd = {
     before_render() {
         setTitle("UserAdd");
@@ -36,7 +36,7 @@ const UserAdd = {
                               <label class="block text-sm font-medium text-gray-700">
                               Image ID
                               </label>
-                              <input name="image"class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
+                              <input name="image" id="image_users" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
                           </div>
                               
                           <div class="mb-3">
@@ -78,21 +78,41 @@ const UserAdd = {
 
         const formAddUsers = document.querySelector("#formAddUsers");
         const buttonSave = document.querySelector("#btn-save-users");
+
+        const CLOUDINARY_API = " https://api.cloudinary.com/v1_1/asm-ph13269/image/upload";
+        const CLOUDINARY_PRESET = "m1lkf3uy";
+
+        const userImage = document.querySelector("#image_users");
+
         buttonSave.onclick = async function () {
+            let file = userImage.files[0];
+            const formData = new FormData();
+            formData.append('file',file);
+            formData.append("upload_preset",CLOUDINARY_PRESET);
+
+            //call api
+           const response= await axios.post(CLOUDINARY_API,formData,{
+                headers: {
+                    "Content-Type": "application/form-data",
+                }
+            })
+            console.log(file);
             let params = {
                 name: formAddUsers.name.value,
+                image:response.data.url,
                 email: formAddUsers.email.value,
-                image: formAddUsers.image.value,
                 role: formAddUsers.role.value,
                 status: formAddUsers.status.value,
                 address: formAddUsers.address.value,
             };
             let dataSave = await createUsers(params);
             console.log(dataSave);
-            formAddUsers.reset();
             alert("Add success");
-
+            formAddUsers.reset();
+            document.location.href = "/admin/users";
         }
+       
+
     }
 }
 export default UserAdd;
