@@ -1,11 +1,12 @@
-import { setTitle, ApiGet,ApiPut } from "../../../utils";
+import { setTitle } from "../../../utils";
+import { getUsersByID , updateUsers}  from "../../../api/users"
 
 const UserEdit = {
     state: {
         data: {},
     },
     async before_render({ id }) {
-        const UserEdit = await ApiGet(`https://61e7a9b5e32cd90017acbc23.mockapi.io/users/${id}`);
+        const UserEdit = await getUsersByID(id);
         this.state.data = UserEdit;
         setTitle(`Edit: ${this.state.data.name}`);
     },
@@ -74,7 +75,7 @@ const UserEdit = {
                   </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Status</label>
-                      <input type="text" name="status" value="${status}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <input type="text" name="status" value="${status}" class="mt-1 block w-full py-name="status" value="" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Address</label>
@@ -111,8 +112,8 @@ const UserEdit = {
                 status: formEditUsers.status.value,
                 address: formEditUsers.address.value,
             };
-            console.log(pa);
-            let dataSave = await ApiPut(`https://61e7a9b5e32cd90017acbc23.mockapi.io/users/${formEditUsers.id.value}`, params);
+            let dataSave = await updateUsers(`${formEditUsers.id.value}`,params);
+
             console.log(dataSave);
             alert("Edit success");
         };

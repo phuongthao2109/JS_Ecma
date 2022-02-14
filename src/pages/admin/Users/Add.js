@@ -1,4 +1,5 @@
-import { setTitle, ApiPost } from "../../../utils";
+import { setTitle } from "../../../utils";
+import { createUsers } from "../../../api/users";
 
 const UserAdd = {
     before_render() {
@@ -87,7 +88,7 @@ const UserAdd = {
                 status: formAddUsers.status.value,
                 address: formAddUsers.address.value,
             };
-            let dataSave = await ApiPost("https://61e7a9b5e32cd90017acbc23.mockapi.io/users", params);
+            let dataSave = await createUsers(params);
             console.log(dataSave);
             formAddUsers.reset();
             alert("Add success");

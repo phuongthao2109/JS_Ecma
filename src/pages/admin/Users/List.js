@@ -1,17 +1,29 @@
-import { setTitle, ApiGet } from "../../../utils";
+import { setTitle, reRender } from "../../../utils";
+import { getAllUsers, deleteUsersByID } from "../../../api/users";
 
 const UserList = {
-  before_render() {
-    setTitle("List News");
+  after_render() {
+    const delUserBtn = document.querySelectorAll(".btn-delete-users");
+    delUserBtn.forEach((element) => {
+      const id = element.dataset.id;
+      element.onclick = async () => {
+        const confirm = window.confirm('Are you sure you want to delete?');
+        if (confirm) {
+          await deleteUsersByID(id).then(() => {
+            console.log("delete successfully");
+            reRender(UserList, "#app")
+          });
+        }
+      }
+    })
   },
-  after_render() { },
+
   async usersMapping() {
     let usersHtml = "";
     try {
-      const users = await ApiGet("https://61e7a9b5e32cd90017acbc23.mockapi.io/users");
+      const users = await getAllUsers();
       usersHtml = users
-        .map((item, key) => {
-          console.log(item);
+        .map((item) => {
           return /* html */ `
             <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center">
@@ -24,17 +36,18 @@ const UserList = {
               </div>
             </div>
           </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-smq text-gray-900 ml-4" >${item.address}</div>
+
+          </div>
           <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${item.address}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.status}</span>
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.size}</span>
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
 
           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <a href="/admin/users/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>
-              <button class="bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white news-delete-btn" data-key="${key}">Delete</button>
+              <button class="btn-delete-users bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white" data-id=${item.id}>Delete</button>
           </td>
       </tr>
             `;
@@ -100,6 +113,9 @@ const UserList = {
             </div>    
         `;
   },
+  before_render() {
+    setTitle("List News")
+  }
 };
 
 export default UserList;
