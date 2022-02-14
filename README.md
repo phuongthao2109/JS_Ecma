@@ -23,4 +23,6 @@ Kế hoạch theo ngày :
      + validation 
      + dựng lại layout UI/shop 
      + tìm hiểu chức năng lọc filter sản phẩm 
-     + tìm hiểu về đăng nhâhp, đăng kí băngf 
+     + tìm hiểu về đăng nhâhp, đăng kí băng gg và github
+
+====>> làm theo đúng kế hoạch không học lại thì bỏ mẹ nhé !!!!!!!!!!!!!!!!!!!!!
