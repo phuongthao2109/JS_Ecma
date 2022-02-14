@@ -1,5 +1,5 @@
 import NavAdmin from "../components/admin/navAdmin";
-const AdminLayout = (Content) =>{
+ const AdminLayout = (Content) =>{
         return /* html */`
          <div class="min-h-full">
                ${NavAdmin}
@@ -9,7 +9,7 @@ const AdminLayout = (Content) =>{
                   <!-- Replace with your content -->
                   <div class="px-4 py-6 sm:px-0">
                      <div class="rounded-lg h-96">
-                           ${Content}
+                         ${Content}
                      </div>
                   </div>
                   <!-- /End replace -->

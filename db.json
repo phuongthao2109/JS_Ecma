@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "createdAt": "2022-02-12T07:55:37.741Z",
+      "name": "Nellie Lindgren",
+      "avatar": "https://cdn.fakercloud.com/avatars/tom_even_128.jpg",
+      "id": "1",
+      "role": "1",
+      "status": "fine",
+      "address": "Usa",
+      "description": "Nellie Lindgren"
+    },
+    {
+      "createdAt": "2022-02-11T19:49:48.281Z",
+      "name": "Mrs. Jordan Hauck",
+      "avatar": "https://cdn.fakercloud.com/avatars/elbuscainfo_128.jpg",
+      "id": "2",
+      "role": "1",
+      "status": "fine",
+      "address": "Usa",
+      "description": "Nellie Lindgren"
+    },
+    {
+      "createdAt": "2022-02-11T23:40:27.549Z",
+      "name": "Latoya Kerluke",
+      "avatar": "https://cdn.fakercloud.com/avatars/themrdave_128.jpg",
+      "id": "3",
+      "role": "1",
+      "status": "fine",
+      "address": "Usa",
+      "description": "Nellie Lindgren"
+    },
+    {
+      "createdAt": "2022-02-11T15:31:42.580Z",
+      "name": "Jon Heaney",
+      "avatar": "https://cdn.fakercloud.com/avatars/necodymiconer_128.jpg",
+      "id": "4",
+      "role": "1",
+      "status": "fine",
+      "address": "Usa",
+      "description": "Nellie Lindgren"
+    },
+    {
+      "email": "thaotpph13269@fpt.edu.vn",
+      "image": "C:\\fakepath\\studentID.jpg",
+      "role": "1",
+      "status": "bad",
+      "address": "USA",
+      "id": "1_tr1bj"
+    },
+    {
+      "name": "trijnh phuong thao",
+      "email": "thaotpph1369@fpt.edu.vn",
+      "image": "C:\\fakepath\\studentID.jpg",
+      "role": "1",
+      "status": "bad",
+      "address": "USA",
+      "id": "BQuNs_f"
+    },
+    {
+      "name": "Phương Thảo Trịnh",
+      "email": "thaotpph13269@fpt.edu.vn",
+      "image": "C:\\fakepath\\studentID.jpg",
+      "role": "1",
+      "status": "bad2",
+      "address": "USA",
+      "id": "X0kSjb0"
+    }
+  ]
+}

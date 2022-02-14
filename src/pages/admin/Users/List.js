@@ -1,57 +1,53 @@
-import { listProduct } from "../../../data";
-import { setTitle } from "../../../utils";
+import { setTitle, ApiGet } from "../../../utils";
 
 const UserList = {
-  state: {
-    listProduct: listProduct,
-  },
   before_render() {
     setTitle("List News");
   },
-  after_render() {
-    let newsDeleteButton = document.querySelectorAll(".news-delete-btn");
-    newsDeleteButton.forEach((item) => {
-      item.onclick = () => {
-        let dataKey = item.getAttribute("data-key");
-        this.state.listNews.splice(dataKey, 1);
-        item.parentElement.parentElement.remove();
-        console.log(this.state.listNews);
-      };
-    });
-  },
-  newsMapping() {
-    return this.state.listProduct
-      .map((item, key) => {
-        return /* html */ `
-                      <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                          <img class="h-10 w-10 rounded-full" src="${item.image}" alt="">
-                        </div>
-                        <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">${item.name}</div>
-                          <div class="text-sm text-gray-500">${item.short_description}</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">${item.description}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.size}</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
+  after_render() { },
+  async usersMapping() {
+    let usersHtml = "";
+    try {
+      const users = await ApiGet("http://localhost:3001/users");
+      usersHtml = users
+        .map((item, key) => {
+          console.log(item);
+          return /* html */ `
+            <td class="px-6 py-4 whitespace-nowrap">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 h-10 w-10">
+                <img class="h-10 w-10 rounded-full" src="${item.image}" alt="">
+              </div>
+              <div class="ml-4">
+                <div class="text-sm font-medium text-gray-900">${item.name}</div>
+                <div class="text-sm text-gray-500">${item.email}</div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">${item.address}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.status}</span>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
 
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="/admin/users/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>
-                        <button class="bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white news-delete-btn" data-key="${key}">Delete</button>
-                    </td>
-                </tr>
+          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <a href="/admin/users/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>
+              <button class="bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white news-delete-btn" data-key="${key}">Delete</button>
+          </td>
+      </tr>
             `;
-      })
-      .join("");
+
+        })
+        .join("");
+    } catch (e) {
+      console.error(e);
+    }
+    return usersHtml;
   },
-  render() {
+
+  async render() {
     return /* html */ `
         <header class="bg-white shadow">
          <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">
@@ -94,10 +90,8 @@ const UserList = {
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                             <tr>
-                              ${this.newsMapping()}
+                            ${await this.usersMapping()}
                             </tr>
-                
-                            <!-- More people... -->
                           </tbody>
                             </table>
                         </div>

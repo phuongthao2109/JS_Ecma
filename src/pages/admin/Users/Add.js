@@ -1,11 +1,11 @@
-import { setTitle } from "../../../utils";
+import { setTitle, ApiPost } from "../../../utils";
 
 const UserAdd = {
-   before_render() {
-      setTitle("UserAdd");
-   },
-   render() {
-      return /*html*/ `  
+    before_render() {
+        setTitle("UserAdd");
+    },
+    render() {
+        return /*html*/ `  
       <header class="bg-white shadow">
          <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">
             <!-- This example requires Tailwind CSS v2.0+ -->
@@ -28,36 +28,41 @@ const UserAdd = {
       <main>
       <div class="mt-6">
           <div class="mt-5 md:mt-0">
-              <form class="pb-10">
+              <form class="pb-10" id="formAddUsers">
                   <div class="border overflow-hidden sm:rounded-md">
                       <div class="px-4 py-5 bg-white sm:p-6">
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">
                               Image ID
                               </label>
-                              <input class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
+                              <input name="image"class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
                           </div>
                               
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Email</label>
-                              <input type="email" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <input type="email" name="email" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          </div>
+
+                          <div class="mb-3">
+                              <label class="block text-sm font-medium text-gray-700">Name</label>
+                              <input type="text" name="name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
           
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Role</label>
-                              <input type="text" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <input type="text" name="role" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Status</label>
-                              <input type="text" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <input type="text" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Address</label>
-                              <textarea rows="10" class="shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+                              <textarea rows="10" name="address" class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
                           </div>
                       </div>
                       <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                          <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                          <button type="button" id="btn-save-users" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                               Save
                           </button>
                       </div>
@@ -65,16 +70,29 @@ const UserAdd = {
               </form>
           </div>
       </div>
-
-
-
       </main>
-
       `
+    },
+    after_render() {
 
+        const formAddUsers = document.querySelector("#formAddUsers");
+        const buttonSave = document.querySelector("#btn-save-users");
+        buttonSave.onclick = async function () {
+            let params = {
+                title: formAddUsers.title.value,
+                name: formAddUsers.name.value,
+                email: formAddUsers.email.value,
+                image: formAddUsers.image.value,
+                role: formAddUsers.role.value,
+                status: formAddUsers.status.value,
+                address: formAddUsers.address.value,
+            };
+            let dataSave = await ApiPost("http://localhost:3001/users", params);
+            console.log(dataSave);
+            formAddUsers.reset();
+            alert("Add success");
 
-   },
-   after_render() { },
-
+        }
+    }
 }
 export default UserAdd;

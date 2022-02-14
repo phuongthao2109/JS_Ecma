@@ -31,11 +31,9 @@ router.on({
 router.notFound(() => NoLayout(NotFoundPage));
 router.resolve();
 
-
-
-
-
-
+// fetch("https://61e7a9b5e32cd90017acbc23.mockapi.io/users")
+//    .then((response) => response.json())
+//    .then((data) => console.log(data))
 
 
 

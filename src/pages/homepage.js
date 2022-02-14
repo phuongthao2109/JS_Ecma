@@ -4,14 +4,17 @@ import Banner from '../components/UI/banner';
 import newsletter from "../components/UI/newsletter";
 
 const HomePage = {
-    before_render() {
-        setTitle("Trang chủ");
-    },
-    after_render() { },
-    newsMapping: listProduct
-        .slice(0,8)
-        .map((item) => {
-            return /* html */ `
+  before_render() { 
+  },
+  after_render() {
+    setTitle("Trang chủ");
+  },
+ 
+  productsMapping: listProduct
+    .slice(0, 8)
+    .map((item) => {
+      return /* html */ `
+            
             <div class="shadow-lg rounded-lg">
             <a href="/product/${item.slug}">
               <img src="${item.image}" class="rounded-tl-lg rounded-tr-lg" />
@@ -42,11 +45,10 @@ const HomePage = {
             </div>
           </div>
            `;
-        })
-        .join(""),
-    render() {
-
-        return /* html */ `
+    })
+    .join(""),
+  render() {
+    return /* html */ `
            <div class="mt-4">
              ${Banner}
            </div>
@@ -63,12 +65,12 @@ const HomePage = {
              </a>
            </div>
          <div class="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-           ${this.newsMapping}
+           ${this.productsMapping}
            </div>
             <div class="">
                  ${newsletter}
             </div>
        `;
-    },
+  },
 };
 export default HomePage;
