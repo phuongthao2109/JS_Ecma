@@ -44,27 +44,3 @@ export const updateUsers = async (id, params) => {
         console.error(error);
     }
 };
-// export const ApiPostImage = async (url, body) => {
-//     const params = {
-//        method: "POST",
-//        headers: {
-//           "content-type": "application/json",
-//        },
-//        body: JSON.stringify(body),
-//     };
-//     const response = await fetch(url, params);
-//     return response.json();
-//  };
- 
- 
-
-// export const UploadImage =  (params) => {
-//     const params = {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/x-www-formendcoded",
-//         }
-//     }cls
-
-    
-// }

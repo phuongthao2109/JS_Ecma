@@ -1,17 +1,21 @@
 import { setTitle } from "../../utils/index";
+import { signin } from "../../api/auth";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css"
+
 const SignIn = {
-   before_render() {
-       setTitle("Sign In");
-   },
-   render() {
-       return /* html */ `
+    before_render() {
+        setTitle("Sign In");
+    },
+    render() {
+        return /* html */ `
            <div class="flex flex-col items-center justify-center min-h-screen p-4 space-y-4 antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
                <main>
                    <div class="w-full max-w-sm px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker">
                        <h1 class="text-xl font-semibold text-center">Login</h1>
-                       <form action="#" class="space-y-6" id="form-submit">
-                           <input class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-primary-100" type="text" name="username" placeholder="Username" required="">
-                           <input class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-primary-100" type="password" name="password" placeholder="Password" required="">
+                       <form action="#" class="space-y-6" id="formSignin">
+                           <input class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-primary-100" type="text" name="email" id="email" placeholder="Email" required="">
+                           <input class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-primary-100" type="password" name="password" id="password" placeholder="Password" required="">
                            <div class="flex items-center justify-between">
                                <div class="flex items-start">
                                    <div class="flex items-center h-5">
@@ -29,6 +33,7 @@ const SignIn = {
                                </button>
                            </div>
                        </form>
+
                        <div class="flex items-center justify-center space-x-2 flex-nowrap">
                            <span class="w-20 h-px bg-gray-300"></span>
                            <span>OR</span>
@@ -52,7 +57,30 @@ const SignIn = {
                </main>
            </div>
        `;
-   }
+    },
+    after_render() {
+        const formSignin = document.querySelector("#formSignin");
+        formSignin.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            try {
+                const { data } = await signin({
+                    email: document.querySelector("#email").value,
+                    password: document.querySelector("#password").value,
+                });
+                if(data){
+                    toastr.success("login successfully, redirect after 3s")
+                    setTimeout(() =>{
+                        document.location.href = "/"
+                    },3000)
+                   
+                }
+            } catch (error) {
+                toastr.error("Login failed",error.response.data);
+            }
+        })
+    }
+
+
 };
 
 export default SignIn;

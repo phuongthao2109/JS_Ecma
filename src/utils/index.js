@@ -16,13 +16,14 @@ export const AdminRender = async (component, params) => {
    await component.after_render();
 };
 
-export const NoLayout = (component, params) => {
-   component.before_render(params);
-   document.getElementById("app").innerHTML = component.render();
+export const NoLayout = async (component, params) => {
+   await component.before_render(params);
+   document.getElementById("app").innerHTML = await component.render();
+   await component.after_render();
 }
 export const reRenderAdmin = async (component, domElement) => {
    if(component){
-       document.querySelector(domElement).innerHTML = AdminLayout(await component.render());
+       document.querySelector(domElement).innerHTML = (await component.render());
        if (component.afterRender) component.afterRender();
    }
  };

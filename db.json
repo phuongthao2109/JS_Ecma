@@ -1,79 +1,42 @@
 {
   "users": [
     {
-      "createdAt": "2022-02-12T07:55:37.741Z",
-      "name": "Nellie Lindgren",
-      "avatar": "https://cdn.fakercloud.com/avatars/tom_even_128.jpg",
-      "id": "1",
-      "role": "1",
-      "status": "fine",
-      "address": "Usa",
-      "description": "Nellie Lindgren"
+      "email": "admin@gmail.com",
+      "name": "admin",
+      "address": "usa",
+      "role": "admin",
+      "status": "active",
+      "image": "",
+      "password": "$2a$10$jIjiXSV5MychwbDgC8L3LuBRqnMeFnD7aZx1jV4TKnENpVFxJ5/ca",
+      "id": 1
     },
     {
-      "createdAt": "2022-02-11T19:49:48.281Z",
-      "name": "Mrs. Jordan Hauck",
-      "avatar": "https://cdn.fakercloud.com/avatars/elbuscainfo_128.jpg",
-      "id": "2",
-      "role": "1",
-      "status": "fine",
-      "address": "Usa",
-      "description": "Nellie Lindgren"
+      "email": "member@gmail.com",
+      "name": "admin",
+      "address": "usa",
+      "role": "admin",
+      "image": "",
+      "status": "active",
+      "password": "123123",
+      "id": 2
     },
     {
-      "createdAt": "2022-02-11T23:40:27.549Z",
-      "name": "Latoya Kerluke",
-      "avatar": "https://cdn.fakercloud.com/avatars/themrdave_128.jpg",
-      "id": "3",
-      "role": "1",
-      "status": "fine",
-      "address": "Usa",
-      "description": "Nellie Lindgren"
+      "email": "thaotpph136wwee9@fpt.edu.vn",
+      "password": "$2a$10$fGjOXUTKY90vKPbJkCbhGeLsQkzQVaUE0YVtH8N.HEWV5QWA8geBC",
+      "username": "sue",
+      "id": 3
     },
     {
-      "createdAt": "2022-02-11T15:31:42.580Z",
-      "name": "Jon Heaney",
-      "avatar": "https://cdn.fakercloud.com/avatars/necodymiconer_128.jpg",
-      "id": "4",
-      "role": "1",
-      "status": "fine",
-      "address": "Usa",
-      "description": "Nellie Lindgren"
+      "email": "sue123@gmail.com",
+      "password": "$2a$10$QfkOpi6mJ8wJonKTaB5tKOQG2E34JvE6nsmFiiLsEdCb685yNkxxq",
+      "username": "minh phu",
+      "id": 4
     },
     {
-      "email": "thaotpph13269@fpt.edu.vn",
-      "image": "C:\\fakepath\\studentID.jpg",
-      "role": "1",
-      "status": "bad",
-      "address": "USA",
-      "id": "1_tr1bj"
-    },
-    {
-      "name": "trijnh phuong thao",
-      "email": "thaotpph1369@fpt.edu.vn",
-      "image": "C:\\fakepath\\studentID.jpg",
-      "role": "1",
-      "status": "bad",
-      "address": "USA",
-      "id": "BQuNs_f"
-    },
-    {
-      "name": "Phương Thảo Trịnh",
-      "email": "thaotpph13269@fpt.edu.vn",
-      "image": "C:\\fakepath\\studentID.jpg",
-      "role": "1",
-      "status": "bad2",
-      "address": "USA",
-      "id": "X0kSjb0"
-    },
-    {
-      "name": "sss",
-      "email": "thao@gmail.con",
-      "image": "C:\\fakepath\\studentID.jpg",
-      "role": "1",
-      "status": "bad",
-      "address": "USA",
-      "id": "mRXgClq"
+      "email": "lalisa97@gmail.com",
+      "password": "$2a$10$I6TX2vjbvxAMhJH6qrZb5Oe8R2UgtnSAp7aov98ZU.OZqnaVw5q8m",
+      "username": "lisa",
+      "id": 5
     }
   ]
 }

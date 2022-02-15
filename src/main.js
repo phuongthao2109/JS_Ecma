@@ -12,6 +12,7 @@ import UserEdit from "./pages/admin/Users/Edit";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const router = new Navigo("/", { linksSelector: "a" });
+
 router.on({
 
    "/": () => Render(HomePage),
