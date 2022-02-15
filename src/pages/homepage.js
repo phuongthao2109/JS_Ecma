@@ -1,4 +1,5 @@
 import { setTitle } from "../utils/index";
+import Header from "../components/UI/header";
 import { listProduct } from "../data";
 import Banner from '../components/UI/banner';
 import newsletter from "../components/UI/newsletter";
@@ -8,6 +9,7 @@ const HomePage = {
   },
   after_render() {
     setTitle("Trang chủ");
+   Header.after_render();
   },
  
   productsMapping: listProduct

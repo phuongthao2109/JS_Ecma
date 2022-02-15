@@ -24,12 +24,13 @@ const SignUp = {
                        <input type="text" placeholder="Email" name="email" id="email"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                    </div>
+                   
                    <div class="mt-4">
                        <label class="block">Password<label>
                        <input type="password" placeholder="Password" name="password" id="password"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                    </div>
-                  
+
                    <span class="text-xs text-red-400">Password must be same!</span>
                    <div class="flex">
                        <button id="btn-save-users" class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Create
@@ -56,9 +57,14 @@ const SignUp = {
                     username: document.querySelector("#username").value,
                     email: document.querySelector("#email").value,
                     password: document.querySelector("#password").value,
+                    role: "user", 
+                    status: "",
+                    address:"",
+                    image: "",
+
                 });
                 if(data){
-                    toastr.success("login successfully, redirect after 3s")
+                    toastr.success("signup successfully, redirect after 3s")
                     setTimeout(() =>{
                         document.location.href = "/signin"
                     },3000)

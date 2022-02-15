@@ -31,14 +31,14 @@ export const createUsers = async (params) => {
     try {
         const response = await Axios.post("/users", params);
         return response;
-    } catch (error) {
+    } catch {
         console.error(error);
     }
 };
 
 export const updateUsers = async (id, params) => {
     try {
-        const response = await Axios.put(`/users/${id}`, params);
+        const response = await Axios.patch(`/users/${id}`, params);
         return response;
     } catch (error) {
         console.error(error);

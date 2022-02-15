@@ -1,5 +1,6 @@
 import { setTitle } from "../../../utils";
-import { getUsersByID , updateUsers}  from "../../../api/users"
+import { getUsersByID , updateUsers}  from "../../../api/users";
+import axios from "axios";
 
 const UserEdit = {
     state: {
@@ -7,11 +8,12 @@ const UserEdit = {
     },
     async before_render({ id }) {
         const UserEdit = await getUsersByID(id);
+        console.log("UserEdit",UserEdit);
         this.state.data = UserEdit;
-        setTitle(`Edit: ${this.state.data.name}`);
+        setTitle(`Edit: ${this.state.data.username}`);
     },
     render() {
-        const { name, email, image, id, role, address,status } = this.state.data;
+        const { username, email, image, id, role, address,status } = this.state.data;
         return /*html*/ `  
       <header class="bg-white shadow">
          <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">
@@ -45,7 +47,7 @@ const UserEdit = {
           <form class="pb-10" id="formEditUsers">
           <div class="border overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-white sm:p-6">
-                <input type="hidden" name="id" value="${id}" >
+                <input type="hidden" name="id" id="id" value="${id}" >
                 <div class="mb-3">
                     <label class="block text-sm font-medium text-gray-700">
                         Photo
@@ -56,30 +58,30 @@ const UserEdit = {
                       <label class="block text-sm font-medium text-gray-700">
                       Image ID
                       </label>
-                      <input name="image" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
+                      <input name="image" id="image_users" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
                   </div>
                       
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Email</label>
-                      <input type="email" name="email" value="${email}"  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <input type="email" id="email" name="email" value="${email}"  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
 
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Name</label>
-                      <input type="text" name="name" value="${name}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <input type="text" id="username" name="username" value="${username}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
   
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Role</label>
-                      <input type="text" name="role" value="${role}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <input type="text" id="role" name="role" value="${role}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Status</label>
-                      <input type="text" name="status" value="${status}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <input type="text" id="status" name="status" value="${status}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                       </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Address</label>
-                      <textarea rows="10" name="address" class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com">${address}</textarea>
+                      <textarea rows="10" id="address" name="address" class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com">${address}</textarea>
                   </div>
               </div>
               <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -103,20 +105,39 @@ const UserEdit = {
     after_render() {
         const formEditUsers = document.querySelector("#formEditUsers");
         const buttonSave = document.querySelector("#btn-save-users");
-        buttonSave.onclick = async function () {
+
+        const CLOUDINARY_API = " https://api.cloudinary.com/v1_1/asm-ph13269/image/upload";
+        const CLOUDINARY_PRESET = "m1lkf3uy";
+
+        const userImage = document.querySelector("#image_users");
+        buttonSave.onclick = async function (e) {
+            e.preventDefault();
+            let file = userImage.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append("upload_preset", CLOUDINARY_PRESET);
+
+            //call api
+            const { data } = await axios.post(CLOUDINARY_API, formData, {
+                headers: {
+                    "Content-Type": "application/form-data",
+                }
+            })
             let params = {
-                name: formEditUsers.name.value,
+                username: formEditUsers.username.value,
+                image: data.url,
                 email: formEditUsers.email.value,
-                image: formEditUsers.image.value,
                 role: formEditUsers.role.value,
                 status: formEditUsers.status.value,
                 address: formEditUsers.address.value,
             };
-            let dataSave = await updateUsers(`${formEditUsers.id.value}`,params);
+            let dataSave = await updateUsers(params);
+            console.log("dataSave",dataSave);
+            alert("Add success");
+            formEditUsers.reset();
+            document.location.href = "/admin/users";
+        }
 
-            console.log(dataSave);
-            alert("Edit success");
-        };
     },
 
 }

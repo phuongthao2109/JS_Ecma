@@ -67,15 +67,16 @@ const SignIn = {
                     email: document.querySelector("#email").value,
                     password: document.querySelector("#password").value,
                 });
-                if(data){
+                if (data) {
                     toastr.success("login successfully, redirect after 3s")
-                    setTimeout(() =>{
+                    setTimeout(() => {
                         document.location.href = "/"
-                    },3000)
-                   
+                        localStorage.setItem("user", JSON.stringify(data.user))
+                    }, 3000)
+
                 }
             } catch (error) {
-                toastr.error("Login failed",error.response.data);
+                toastr.error("Login failed", error.response.data);
             }
         })
     }

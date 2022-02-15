@@ -19,15 +19,9 @@ export const listMenu = [
    
    {
       name: "Login",
-      src: "/signin"
+      src: "/signin",
+      id:'loginMenu'
    }
-   ,
-   
-   {
-      name: "Dashboard",
-      src: "/admin"
-   }
-
 ];
 
 

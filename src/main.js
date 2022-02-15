@@ -1,4 +1,7 @@
 import Navigo from "navigo";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+
 import { Render, NoLayout, AdminRender } from "./utils/index";
 import HomePage from "./pages/homepage";
 import Products from "./pages/product/products";
@@ -12,6 +15,20 @@ import UserEdit from "./pages/admin/Users/Edit";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const router = new Navigo("/", { linksSelector: "a" });
+
+router.on("/admin/*", () => {}, {
+   before: (done) =>{ 
+       if(localStorage.getItem('user')){
+          
+           const userRole = JSON.parse(localStorage.getItem('user')).role;
+           if(userRole === 'admin'){
+               done();
+           } else {
+               document.location.href="/"
+           }
+       }
+   }
+})
 
 router.on({
 

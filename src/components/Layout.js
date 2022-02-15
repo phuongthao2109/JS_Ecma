@@ -13,7 +13,7 @@ const Layout = (Content) => {
             
          </div>
          <div class=""> ${Search}</div>
-         <div class="menu"> ${Menu}</div>
+         <div class="menu"> ${Menu.render()}</div>
       </div>
       <div class="">${Content}</div>
       <div class="">${Footer}</div>

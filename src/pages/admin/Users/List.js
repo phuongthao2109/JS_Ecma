@@ -30,19 +30,19 @@ const UserList = {
                 <img class="h-10 w-10 rounded-full" src="${item.image}" alt="">
               </div>
               <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">${item.name}</div>
-                <div class="text-sm text-gray-500">${item.email}</div>
+                <div class="text-sm font-medium text-gray-900" name="username" id="username">${item.username}</div>
+                <div class="text-sm text-gray-500" name="email" id="email">${item.email}</div>
               </div>
             </div>
           </td>
             <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-smq text-gray-900 ml-4" >${item.address}</div>
+            <div class="text-smq text-gray-900 ml-4" name="address" id="address">${item.address}</div>
 
           </div>
           <td class="px-6 py-4 whitespace-nowrap">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> ${item.status}</span>
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" name="status" id=> ${item.status}</span>
           </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500" name="role" id="role">${item.role}</td>
 
           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <a href="/admin/users/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>

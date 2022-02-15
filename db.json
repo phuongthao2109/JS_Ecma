@@ -1,42 +1,11 @@
 {
   "users": [
     {
-      "email": "admin@gmail.com",
-      "name": "admin",
-      "address": "usa",
-      "role": "admin",
-      "status": "active",
-      "image": "",
-      "password": "$2a$10$jIjiXSV5MychwbDgC8L3LuBRqnMeFnD7aZx1jV4TKnENpVFxJ5/ca",
-      "id": 1
-    },
-    {
-      "email": "member@gmail.com",
-      "name": "admin",
-      "address": "usa",
-      "role": "admin",
-      "image": "",
-      "status": "active",
-      "password": "123123",
-      "id": 2
-    },
-    {
-      "email": "thaotpph136wwee9@fpt.edu.vn",
-      "password": "$2a$10$fGjOXUTKY90vKPbJkCbhGeLsQkzQVaUE0YVtH8N.HEWV5QWA8geBC",
-      "username": "sue",
-      "id": 3
-    },
-    {
       "email": "sue123@gmail.com",
-      "password": "$2a$10$QfkOpi6mJ8wJonKTaB5tKOQG2E34JvE6nsmFiiLsEdCb685yNkxxq",
-      "username": "minh phu",
-      "id": 4
-    },
-    {
-      "email": "lalisa97@gmail.com",
-      "password": "$2a$10$I6TX2vjbvxAMhJH6qrZb5Oe8R2UgtnSAp7aov98ZU.OZqnaVw5q8m",
-      "username": "lisa",
-      "id": 5
+      "password": "$2a$10$BI4fqDVCQmV.GVjAbNIa3OOQWCoT8lOCQPiCfC8pDVxiSziJpB1w6",
+      "username": "sue",
+      "role": "admin",
+      "id": 2
     }
   ]
 }

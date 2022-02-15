@@ -1,4 +1,4 @@
-import { setTitle, reRenderAdmin } from "../../../utils";
+import { setTitle } from "../../../utils";
 import { createUsers } from "../../../api/users";
 import axios from "axios";
 const UserAdd = {
@@ -41,31 +41,26 @@ const UserAdd = {
                               
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Email</label>
-                              <input type="email" name="email" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <input type="email" name="email" id="email" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
 
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Name</label>
-                              <input type="text" name="name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                              <input type="text" name="username" id="username" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
           
                           <div class="mb-3">
                                 <label class="block text-sm font-medium text-gray-700">Role</label>
                                 <select id="role" name="role" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
-                                    <option value="user">User</option>
-                                    <option value="admin">Admin</option>
+                                    <option value="0" disabled selected >User</option>
+                                    <option value="user" >User</option>
+                                    <option value="admin" >Admin</option>
                                 </select>
                           </div>
-                          <div class="mb-3">
-                              <label class="block text-sm font-medium text-gray-700">Status</label>
-                                <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
-                                    <option value="active">Active</option>
-                                    <option value="hidden">Hidden</option>
-                                </select>
-                          </div>
+                          
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Address</label>
-                              <textarea rows="3" name="address" class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder=""></textarea>
+                              <textarea rows="3" name="address" id="address"class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder=""></textarea>
                           </div>
                       </div>
                       <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -81,7 +76,6 @@ const UserAdd = {
       `
     },
     after_render() {
-
         const formAddUsers = document.querySelector("#formAddUsers");
         const buttonSave = document.querySelector("#btn-save-users");
 
@@ -97,25 +91,25 @@ const UserAdd = {
             formData.append("upload_preset", CLOUDINARY_PRESET);
 
             //call api
-            const response = await axios.post(CLOUDINARY_API, formData, {
+            const {data} = await axios.post(CLOUDINARY_API, formData, {
                 headers: {
                     "Content-Type": "application/form-data",
                 }
             })
-            console.log(file);
+
             let params = {
-                name: formAddUsers.name.value,
-                image: response.data.url,
+                username: formAddUsers.username.value,
+                image: data.url,
                 email: formAddUsers.email.value,
                 role: formAddUsers.role.value,
-                status: formAddUsers.status.value,
                 address: formAddUsers.address.value,
             };
+            
             let dataSave = await createUsers(params);
-            console.log(dataSave);
-            alert("Add success");
-            formAddUsers.reset();
-            document.location.href = "/admin/users";
+            console.log(params);
+            // alert("Add success");
+            // formAddUsers.reset();
+            // document.location.href = "/admin/users";
         }
 
 

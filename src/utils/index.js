@@ -27,3 +27,11 @@ export const reRenderAdmin = async (component, domElement) => {
        if (component.afterRender) component.afterRender();
    }
  };
+
+ 
+ export const reRenderUI = async (component, domElement) => {
+   if(component){
+      document.querySelector(domElement).innerHTML = (await component.render());
+      if (component.afterRender) component.afterRender();
+  }
+ }
