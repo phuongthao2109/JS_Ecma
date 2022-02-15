@@ -27,18 +27,16 @@ export const deleteUsersByID = async (id) => {
     }
 };
 
-export const createUsers = async (params) => {
-    try {
-        const response = await Axios.post("/users", params);
+export const createUsers = (params) => {
+   
+        const response = Axios.post("/users", params);
         return response;
-    } catch {
-        console.error(error);
-    }
+
 };
 
-export const updateUsers = async (id, params) => {
+export const updateUsers = async (params) => {
     try {
-        const response = await Axios.patch(`/users/${id}`, params);
+        const response = await Axios.patch(`/users/${params.id}`, params);
         return response;
     } catch (error) {
         console.error(error);

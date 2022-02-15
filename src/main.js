@@ -1,6 +1,5 @@
 import Navigo from "navigo";
-import toastr from "toastr";
-import "toastr/build/toastr.min.css";
+
 
 import { Render, NoLayout, AdminRender } from "./utils/index";
 import HomePage from "./pages/homepage";

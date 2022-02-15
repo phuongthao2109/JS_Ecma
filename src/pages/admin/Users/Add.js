@@ -43,6 +43,11 @@ const UserAdd = {
                               <label class="block text-sm font-medium text-gray-700">Email</label>
                               <input type="email" name="email" id="email" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
+                              
+                          <div class="mb-3">
+                              <label class="block text-sm font-medium text-gray-700">Password</label>
+                              <input type="password" name="password" id="password" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          </div>
 
                           <div class="mb-3">
                               <label class="block text-sm font-medium text-gray-700">Name</label>
@@ -50,9 +55,18 @@ const UserAdd = {
                           </div>
           
                           <div class="mb-3">
+                                <label class="block text-sm font-medium text-gray-700">Status</label>
+                                <select id="status" name="status"   class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
+                                    <option value="0" disabled selected >Choose</option>
+                                    <option value="active" >Active</option>
+                                    <option value="hidden" >Hidden</option>
+                                </select>
+                            </div>
+
+                          <div class="mb-3">
                                 <label class="block text-sm font-medium text-gray-700">Role</label>
                                 <select id="role" name="role" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
-                                    <option value="0" disabled selected >User</option>
+                                    <option value="0" disabled selected >Choose</option>
                                     <option value="user" >User</option>
                                     <option value="admin" >Admin</option>
                                 </select>
@@ -84,32 +98,35 @@ const UserAdd = {
 
         const userImage = document.querySelector("#image_users");
 
-        buttonSave.onclick = async function () {
+        buttonSave.onclick = function () {
             let file = userImage.files[0];
             const formData = new FormData();
             formData.append('file', file);
             formData.append("upload_preset", CLOUDINARY_PRESET);
 
             //call api
-            const {data} = await axios.post(CLOUDINARY_API, formData, {
+            axios.post(CLOUDINARY_API, formData, {
                 headers: {
                     "Content-Type": "application/form-data",
                 }
-            })
+            }).then(res => {
 
-            let params = {
-                username: formAddUsers.username.value,
-                image: data.url,
-                email: formAddUsers.email.value,
-                role: formAddUsers.role.value,
-                address: formAddUsers.address.value,
-            };
+                let params = {
+                    username: formAddUsers.username.value,
+                    image: res.data.url,
+                    email: formAddUsers.email.value,
+                    password: formAddUsers.password.value,
+                    role: formAddUsers.role.value,
+                    address: formAddUsers.address.value,
+                    status: formAddUsers.status.value,
+                };
+                
+                createUsers(params).then(res => {
+                    formAddUsers.reset();
+                    document.location.href = "/admin/users";    
+                })
+            })
             
-            let dataSave = await createUsers(params);
-            console.log(params);
-            // alert("Add success");
-            // formAddUsers.reset();
-            // document.location.href = "/admin/users";
         }
 
 

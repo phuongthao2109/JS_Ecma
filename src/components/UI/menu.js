@@ -22,19 +22,21 @@ const Menu = {
         const username = document.querySelector("#username");
         const logout = document.querySelector("#logout");
 
-        console.log(JSON.parse(localStorage.getItem('user')));
+        const userLogin = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : false
 
-        if (username) {
-            username.innerHTML = JSON.parse(localStorage.getItem('user')).username;
+        if (userLogin) {
+            if (username) username.innerHTML = userLogin.username;
+            if (logout) {
+                logout.innerHTML = "Logout"
+                logout.href = ""
+                logout.addEventListener('click', function () {
+                    localStorage.removeItem('user');
+                    reRenderUI(Header, "#header");
+                    toastr.success("Logout thành công")
+                })
+            }
         }
 
-        if (logout) {
-            logout.addEventListener('click', function () {
-                localStorage.removeItem('user');
-                reRenderUI(Header, "#header");
-                toastr.success("Logout thành công")
-            })
-        }
 
        
 

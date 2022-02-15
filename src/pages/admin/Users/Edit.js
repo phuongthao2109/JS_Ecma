@@ -1,5 +1,5 @@
 import { setTitle } from "../../../utils";
-import { getUsersByID , updateUsers}  from "../../../api/users";
+import { getUsersByID, updateUsers } from "../../../api/users";
 import axios from "axios";
 
 const UserEdit = {
@@ -8,12 +8,12 @@ const UserEdit = {
     },
     async before_render({ id }) {
         const UserEdit = await getUsersByID(id);
-        console.log("UserEdit",UserEdit);
+        console.log("UserEdit", UserEdit);
         this.state.data = UserEdit;
         setTitle(`Edit: ${this.state.data.username}`);
     },
     render() {
-        const { username, email, image, id, role, address,status } = this.state.data;
+        const { username, image, id, role, address, status } = this.state.data;
         return /*html*/ `  
       <header class="bg-white shadow">
          <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">
@@ -54,16 +54,12 @@ const UserEdit = {
                     </label>
                     <img src="${image}" class="w-64 h-auto rounded-lg mt-1" alt="">
                 </div>
+                    <input type="hidden" name="oldImage" value="${image}">
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">
                       Image ID
                       </label>
                       <input name="image" id="image_users" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
-                  </div>
-                      
-                  <div class="mb-3">
-                      <label class="block text-sm font-medium text-gray-700">Email</label>
-                      <input type="email" id="email" name="email" value="${email}"  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
 
                   <div class="mb-3">
@@ -71,14 +67,24 @@ const UserEdit = {
                       <input type="text" id="username" name="username" value="${username}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
   
-                  <div class="mb-3">
-                      <label class="block text-sm font-medium text-gray-700">Role</label>
-                      <input type="text" id="role" name="role" value="${role}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  </div>
-                  <div class="mb-3">
-                      <label class="block text-sm font-medium text-gray-700">Status</label>
-                      <input type="text" id="status" name="status" value="${status}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                      </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">Status</label>
+
+                        <select id="status" name="status"   class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
+                            <option value="0" disabled selected >Choose</option>
+                            <option value="active" >Active</option>
+                            <option value="hidden" >Hidden</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">Role</label>
+                        <select id="role" name="role" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
+                            <option value="0" disabled selected >Choose</option>
+                            <option value="user" >User</option>
+                            <option value="admin" >Admin</option>
+                        </select>
+                    </div>
                   <div class="mb-3">
                       <label class="block text-sm font-medium text-gray-700">Address</label>
                       <textarea rows="10" id="address" name="address" class="mt-shadow-sm focus:ring-indigo-500 p-3 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com">${address}</textarea>
@@ -117,25 +123,34 @@ const UserEdit = {
             formData.append('file', file);
             formData.append("upload_preset", CLOUDINARY_PRESET);
 
+            let imgurl = "";
             //call api
-            const { data } = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                }
-            })
+            if (file) {
+                const { data } = await axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    }
+                })
+                imgurl = data.url;
+            } else {
+                imgurl = formEditUsers.oldImage.value
+            }
+
+
+
             let params = {
+                id: formEditUsers.id.value,
                 username: formEditUsers.username.value,
-                image: data.url,
-                email: formEditUsers.email.value,
+                image: imgurl,
                 role: formEditUsers.role.value,
                 status: formEditUsers.status.value,
                 address: formEditUsers.address.value,
             };
-            let dataSave = await updateUsers(params);
-            console.log("dataSave",dataSave);
-            alert("Add success");
-            formEditUsers.reset();
-            document.location.href = "/admin/users";
+            updateUsers(params).then(res => {
+                formEditUsers.reset();
+                document.location.href = "/admin/users";
+            });
+
         }
 
     },
