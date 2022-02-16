@@ -38,7 +38,8 @@
       "short_des": "lorem lclvm",
       "desc": "Xu hướng n",
       "status": "show",
-      "id": 1
+      "id": 1,
+      "catePost_id": 1
     },
     {
       "name": "sueadasd",
@@ -46,7 +47,36 @@
       "short_des": "lorem",
       "desc": "d",
       "status": "show",
-      "id": 2
+      "id": 2,
+      "catePost_id": 1
+    }
+  ],
+  "catePosts": [
+    {
+      "id": 1,
+      "name": "cate1"
+    },
+    {
+      "id": 2,
+      "name": "cate2"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "product1",
+      "price": 10000,
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644942883/lgqtj5wvqkyzzqrohbhc.png",
+      "desc": "The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway",
+      "short_desc": "adfsfjsdg"
+    },
+    {
+      "id": 2,
+      "name": "product2",
+      "price": 90000,
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644942883/lgqtj5wvqkyzzqrohbhc.png",
+      "desc": "The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway",
+      "short_desc": "adfsfjsdg"
     }
   ]
 }

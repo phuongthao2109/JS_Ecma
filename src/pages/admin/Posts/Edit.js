@@ -9,6 +9,7 @@ const PostEdit = {
         data: {},
     },
     async before_render({ id }) {
+        console.log(id);
         const PostEdit = await getPostByID(id);
         this.state.data = PostEdit;
         setTitle(`Edit: ${this.state.data.name}`);

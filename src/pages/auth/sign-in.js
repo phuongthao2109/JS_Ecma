@@ -25,7 +25,7 @@ const SignIn = {
                                        <label for="comments" class="text-gray-500 cursor-pointer">Remember me</label>
                                    </div>
                                </div>
-                               <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                               <a href="/forgetPass" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
                            </div>
                            <div>
                                <button type="submit" class="w-full px-4 py-2 font-medium text-center text-white transition-colors duration-200 rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker">
