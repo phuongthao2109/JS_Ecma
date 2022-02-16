@@ -6,7 +6,7 @@
       "username": "sue",
       "role": "admin",
       "status": "active",
-      "address": "vxvxvxv",
+      "address": ";lkm j",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644943771/yshgfctzjl7ihm2sw98p.png",
       "id": 1
     },
@@ -29,6 +29,24 @@
       "address": "dsdasdas",
       "status": "active",
       "id": 3
+    }
+  ],
+  "posts": [
+    {
+      "name": "post 1",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644947906/i3qpudjkcc1tpectualj.png",
+      "short_des": "lorem lclvm",
+      "desc": "Xu hướng n",
+      "status": "show",
+      "id": 1
+    },
+    {
+      "name": "sueadasd",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644981435/ndubjipdnznvyw347zzs.png",
+      "short_des": "lorem",
+      "desc": "d",
+      "status": "show",
+      "id": 2
     }
   ]
 }

@@ -8,7 +8,6 @@ const UserEdit = {
     },
     async before_render({ id }) {
         const UserEdit = await getUsersByID(id);
-        console.log("UserEdit", UserEdit);
         this.state.data = UserEdit;
         setTitle(`Edit: ${this.state.data.username}`);
     },

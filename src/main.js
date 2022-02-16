@@ -5,12 +5,20 @@ import { Render, NoLayout, AdminRender } from "./utils/index";
 import HomePage from "./pages/homepage";
 import Products from "./pages/product/products";
 import ProductDetails from "./pages/product/productDetail";
+
 import SignIn from "./pages/auth/sign-in";
 import SignUp from "./pages/auth/sign-up";
+
 import DashboardPage from "./pages/admin/dashboard";
 import UserList from "./pages/admin/Users/List";
 import UserAdd from "./pages/admin/Users/Add";
 import UserEdit from "./pages/admin/Users/Edit";
+
+import PostList from "./pages/admin/Posts/List";
+import PostAdd from "./pages/admin/Posts/Add";
+import PostEdit from "./pages/admin/Posts/Edit";
+
+
 import NotFoundPage from "./pages/NotFoundPage";
 
 const router = new Navigo("/", { linksSelector: "a" });
@@ -44,6 +52,10 @@ router.on({
    "/admin/users": () => AdminRender(UserList),
    "/admin/users/add": () => AdminRender(UserAdd),
    "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data),
+   "/admin/posts":() => AdminRender(PostList),
+   "/admin/posts/add": () => AdminRender(PostAdd),
+   "/admin/posts/:id/edit": ({ data }) => AdminRender(PostEdit, data),
+
 });
 router.notFound(() => NoLayout(NotFoundPage));
 router.resolve();
