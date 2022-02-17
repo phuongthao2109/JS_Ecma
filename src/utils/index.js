@@ -41,3 +41,4 @@ export const reRenderAdmin = async (component, domElement) => {
 Array.prototype.jmap = function(callback) {
       return this.map(callback).join("");
 }
+

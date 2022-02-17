@@ -134,8 +134,8 @@ const ProductAdd = {
                price: formAddPro.price.value,
                desc: formAddPro.desc.value,
                short_desc: formAddPro.short_desc.value,
-               catePro: formAddPro.catePro.value,
-               brand: formAddPro.brand.value,
+               cateProId: formAddPro.catePro.value,
+               brandId: formAddPro.brand.value,
             };
            console.log(params);
 

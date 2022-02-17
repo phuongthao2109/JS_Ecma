@@ -12,8 +12,9 @@ const Menu = {
             
             <a href="/signin" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4" id="logout">login</a>
             <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4 uppercase" id="username"></a>
-            
-          
+
+
+           
          </div>
     `;
 

@@ -1,14 +1,17 @@
 import { setTitle } from "../../../utils";
-import { getAllProductsHavingBrandsCate } from "../../../api/products";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+import { getAllProductsHavingBrandsCate,  deleteProductsByID} from "../../../api/products";
 
 const ProductList = {
 
-   before_render() { setTitle("Product List") },
+   before_render() { 
+     setTitle("Product List") ;
+  },
    async productsMapping() {
       let productHTml = "";
       try {
          const products = await getAllProductsHavingBrandsCate();
-        
          productHTml = products
             .map((item) => {
                return /* html */ `
@@ -36,7 +39,7 @@ const ProductList = {
               <a href="/admin/products/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>
               <button class="btn-delete-products bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white" data-id=${item.id}>Delete</button>
           </td>
-      </tr>
+       </tr>
             `;
 
             })
@@ -53,7 +56,7 @@ const ProductList = {
              <!-- This example requires Tailwind CSS v2.0+ -->
              <div class="lg:flex lg:items-center lg:justify-between">
              <div class="flex-1 min-w-0">
-                <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Thêm Mới user</h2>
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Thêm Mới Product</h2>
              </div>
              <div class="mt-5 flex lg:mt-0 lg:ml-4">
 
@@ -102,6 +105,23 @@ const ProductList = {
          `;
       
    },
-   after_render() { },
+   after_render() { 
+     const proDel = document.querySelectorAll(".btn-delete-products");
+     proDel.forEach((element)=>{
+      
+      const id = element.dataset.id;
+      element.onclick = async () => {
+        const confirm = window.confirm('Are you sure you want to delete?');
+        if (confirm) {
+          await deleteProductsByID(id).then(() => {
+            toastr.success("delete successfully");
+            window.location.reload();
+          });
+        }
+      }
+     })
+
+
+   },
 }
 export default ProductList;

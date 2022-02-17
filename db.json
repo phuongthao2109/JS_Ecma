@@ -60,35 +60,6 @@
       "name": "cate2"
     }
   ],
-  "products": [
-    {
-      "name": "pro3",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645090123/bw584oms6eudebsrqvus.png",
-      "price": "123123",
-      "desc": "sdfsdfsdf",
-      "short_desc": "ahahahah",
-      "catePro": "2",
-      "brand": "2",
-      "id": 3
-    },
-    {
-      "name": "pro3",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645090525/us7uwbjkqxustxwjb5bg.png",
-      "price": "123123",
-      "desc": "dgddhfgh",
-      "short_desc": "ahahahah",
-      "catePro": "2",
-      "brand": "2",
-      "id": 4
-    }
-  ],
-  "catePros": [
-    {
-      "id": 2,
-      "name": "Danh mục 12",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097091/alwr3au7ibenmfinklfe.png"
-    }
-  ],
   "brands": [
     {
       "name": "văn_tú",
@@ -99,6 +70,25 @@
       "name": "brand3",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645094603/wdhb4egsccebyqnwlrew.jpg",
       "id": 4
+    }
+  ],
+  "catePros": [
+    {
+      "id": 2,
+      "name": "Danh mục 12",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097091/alwr3au7ibenmfinklfe.png"
+    }
+  ],
+  "products": [
+    {
+      "name": "sp 1 asdasd",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+      "price": "123000",
+      "desc": "ahahha",
+      "short_desc": "hahaha",
+      "cateProId": "2",
+      "brandId": "4",
+      "id": 1
     }
   ]
 }

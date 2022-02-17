@@ -46,8 +46,17 @@ export const updateProducts = async (params) => {
 
 export const getAllProductsHavingBrandsCate = async () => {
     try {
-        const { data } = await Axios.get("/products?_expand=brand&_expand=catePro");
+        const { data } = await Axios.get("/products?_expand=catePro&_expand=brand");
         return data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getProductsByIDHavingBrandsCate = async (id) => {
+    try {
+        const { data } = await Axios.get("/products?_expand=catePro&_expand=brand");
+        return data.find((item) => item.id == id);
     } catch (error) {
         console.error(error);
     }
