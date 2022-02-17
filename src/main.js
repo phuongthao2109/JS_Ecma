@@ -27,6 +27,10 @@ import BrandsList from "./pages/admin/Brands/List";
 import BrandsAdd from "./pages/admin/Brands/Add";
 import BrandsEdit from "./pages/admin/Brands/Edit";
 
+import CateList from "./pages/admin/Categories/List";
+import CateAdd from "./pages/admin/Categories/Add";
+import CateEdit from "./pages/admin/Categories/Edit";
+
 import Cart from "./pages/cart";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -75,6 +79,10 @@ router.on({
     "/admin/brands" :() => AdminRender(BrandsList),
     "/admin/brands/add" : () => AdminRender(BrandsAdd),
     "/admin/brands/:id/edit": ({ data }) => AdminRender(BrandsEdit, data),
+
+    "/admin/cate" :() => AdminRender(CateList),
+    "/admin/cate/add" : () => AdminRender(CateAdd),
+    "/admin/cate/:id/edit": ({ data }) => AdminRender(CateEdit, data),
 
     
 

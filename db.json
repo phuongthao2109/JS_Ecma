@@ -33,15 +33,6 @@
   ],
   "posts": [
     {
-      "name": "post 1",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644947906/i3qpudjkcc1tpectualj.png",
-      "short_des": "lorem lclvm",
-      "desc": "Xu hướng n",
-      "status": "show",
-      "id": 1,
-      "catePost_id": 1
-    },
-    {
       "name": "sueadasd",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644981435/ndubjipdnznvyw347zzs.png",
       "short_des": "lorem",
@@ -49,6 +40,14 @@
       "status": "show",
       "id": 2,
       "catePost_id": 1
+    },
+    {
+      "name": "Phuongthao",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097164/l25dqxjkhcjvywknlgew.png",
+      "short_des": "ssa",
+      "desc": "ádasd",
+      "status": "show",
+      "id": 3
     }
   ],
   "catePosts": [
@@ -85,12 +84,9 @@
   ],
   "catePros": [
     {
-      "id": 1,
-      "name": "Danh mục 1"
-    },
-    {
       "id": 2,
-      "name": "Danh mục 2"
+      "name": "Danh mục 12",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097091/alwr3au7ibenmfinklfe.png"
     }
   ],
   "brands": [
@@ -103,11 +99,6 @@
       "name": "brand3",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645094603/wdhb4egsccebyqnwlrew.jpg",
       "id": 4
-    },
-    {
-      "name": "brand34",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645095603/xvemxvbfvliahcph6tbo.png",
-      "id": 5
     }
   ]
 }
