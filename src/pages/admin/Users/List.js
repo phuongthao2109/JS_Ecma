@@ -120,7 +120,6 @@ const UserList = {
   },
   before_render() {
     setTitle("List News");
-    const userLogin = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : false
   }
 };
 
