@@ -3,6 +3,7 @@ import { getProductsByID } from "../../api/products";
 import { addToCart } from '../../utils/cart';
 import toastr from 'toastr';
 import "toastr/build/toastr.min.css";
+import Header from "../../components/UI/header";   
 
 const ProductDetails = {
   state: {
@@ -17,6 +18,7 @@ const ProductDetails = {
   },
 
   after_render() {
+    Header.after_render();
     const { data } = this.state;
 
     const btnAddTocart = document.querySelector("#addToCart");

@@ -29,7 +29,7 @@ const ProductEdit = {
 
   },
   render() {
-    const { name, image, id, price, desc, short_desc, cateProId, brandId } = this.state.data; // casi doan nay thi k caj cai cate nua a o
+    const { name, image, id, price, desc, short_desc, cateProId, brandId } = this.state.data;
     return /*html*/ `
           <header class="bg-white shadow">
           <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">

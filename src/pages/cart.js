@@ -3,7 +3,7 @@ import { setTitle } from "../utils";
 import { decreaseQuantity, increaseQuantity, removeItemInCart } from "../utils/cart";
 import toastr from 'toastr';
 import "toastr/build/toastr.min.css";
-
+import Header from "../components/UI/header";
 
 const CartPage = {
   render() {
@@ -94,6 +94,7 @@ const CartPage = {
   before_render() { },
   after_render() {
     setTitle("Cart Page");
+    Header.after_render();
     
     const btns = document.querySelectorAll('.btn');
     btns.forEach(btn => {

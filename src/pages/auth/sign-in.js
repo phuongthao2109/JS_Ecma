@@ -72,6 +72,11 @@ const SignIn = {
                     setTimeout(() => {
                         document.location.href = "/"
                         localStorage.setItem("user", JSON.stringify(data.user))
+                        if(data.user.role == "admin"){
+                            document.location.href="/admin"
+                        } else {
+                            document.location.href="/"
+                        }
                     }, 3000)
 
                 }

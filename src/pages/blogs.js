@@ -1,4 +1,5 @@
 import { getAllPost } from "../api/posts";
+import Header from "../components/UI/header";   
 import { setTitle } from "../utils";
 const News = {
    before_render() {
@@ -13,7 +14,8 @@ const News = {
         ${await this.BlogMapping()}
         `;
    },
-   after_render() { },
+   after_render() { 
+      Header.after_render();},
 
    async BlogMapping() {
       let blogHtml = "";

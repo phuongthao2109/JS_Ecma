@@ -1,11 +1,13 @@
 import { getPostByID } from "../api/posts";
 import { setTitle } from "../utils";
+import Header from "../components/UI/header"
 
 const BlogDetail = {
    state: {
       data: {},
    },
-   after_render() { },
+   after_render() { Header.after_render()},
+      
    async before_render({ id }) {
       const blogData = await getPostByID(id);
       this.state.data = blogData;
