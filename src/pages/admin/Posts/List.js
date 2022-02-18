@@ -45,7 +45,7 @@ const PostList = {
           <td class="px-6 py-4 whitespace-nowrap">
             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" name="status" id=> ${item.status}</span>
           </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 toggler-white" name="desc" id="desc">${item.desc} </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 toggler-white" name="desc" id="desc">..... </td>
 
           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <a href="/admin/posts/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>

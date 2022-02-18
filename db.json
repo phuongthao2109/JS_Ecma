@@ -33,19 +33,19 @@
   ],
   "posts": [
     {
-      "name": "sueadasd",
+      "name": "The 8 best landing page builders, reviewed",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644981435/ndubjipdnznvyw347zzs.png",
-      "short_des": "lorem",
-      "desc": "d",
+      "short_des": "Facing a challenge is kind of a turn-on for an easy rider",
+      "desc": "There's a time and place for everything… including asking for reviews. For instance: you should not asking for a review on your checkout page. The sole purpose of this page is to guide your customer to complete their purchase, and this means that the page should be as minimalist and pared-down possible. You don't want to have any unnecessary elements or Call To Actions.",
       "status": "show",
       "id": 2,
       "catePost_id": 1
     },
     {
-      "name": "Phuongthao",
+      "name": "How to earn more money as a wellness coach",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097164/l25dqxjkhcjvywknlgew.png",
-      "short_des": "ssa",
-      "desc": "ádasd",
+      "short_des": "Sea no quidam vulputate",
+      "desc": "There's a time and place for everything… including asking for reviews. For instance: you should not asking for a review on your checkout page. The sole purpose of this page is to guide your customer to complete their purchase, and this means that the page should be as minimalist and pared-down possible. You don't want to have any unnecessary elements or Call To Actions.",
       "status": "show",
       "id": 3
     }
@@ -75,8 +75,13 @@
   "catePros": [
     {
       "id": 2,
-      "name": "Danh mục 12",
+      "name": "MEN",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097091/alwr3au7ibenmfinklfe.png"
+    },
+    {
+      "name": "WOMAN",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645115744/xoo1bhgtq4h60tg38z6m.png",
+      "id": 3
     }
   ],
   "products": [
@@ -89,6 +94,14 @@
       "cateProId": "2",
       "brandId": "4",
       "id": 1
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "productId": 1,
+      "quantity": 1,
+      "price": 123000
     }
   ]
 }

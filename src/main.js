@@ -9,6 +9,10 @@ import ProductDetails from "./pages/product/productDetail";
 import SignIn from "./pages/auth/sign-in";
 import SignUp from "./pages/auth/sign-up";
 import forgetPass from "./pages/auth/forgetPass";
+import ProFile from "./pages/profile";
+
+import Blogs from "./pages/blogs"; 
+import BlogDetail from "./pages/detailBlogs";
 
 import DashboardPage from "./pages/admin/dashboard";
 import UserList from "./pages/admin/Users/List";
@@ -56,11 +60,14 @@ router.on({
    "/product": () => Render(Products),
    "/product/:id": ({ data }) => Render(ProductDetails, data),
    "/cart": () => Render(Cart),
+   "/blogs" : () =>Render(Blogs),
+    "/blogs/:id": ({ data }) => Render(BlogDetail, data),
 
    //auth
    "/signin": () => NoLayout(SignIn),
    "/signup": () => NoLayout(SignUp),
    "/forgetPass" : () => NoLayout(forgetPass),
+   "/proFile": () => Render(ProFile),
 
    //admin
    "/admin": () => AdminRender(DashboardPage),

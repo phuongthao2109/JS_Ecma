@@ -1,14 +1,41 @@
 const Footer = () => {
  
       return /* html */ `
-      <div class="border-t-2 border-gray-300 flex flex-col md:flex-row md:justify-between text-center py-5 text-sm">
-         <div class="mb-4">
-            <a href="#" class="mx-2.5">About</a>
-            <a href="#" class="mx-2.5">Privacy Policy</a>
-            <a href="#" class="mx-2.5">Terms of Services</a>
+      <hr>
+      <footer class="p-10 footer bg-base-200 text-base-content mt-3">
+      <div>
+         <span class="footer-title">Services</span> 
+         <a class="link link-hover">Branding</a> 
+         <a class="link link-hover">Design</a> 
+         <a class="link link-hover">Marketing</a> 
+         <a class="link link-hover">Advertisement</a>
+      </div> 
+      <div>
+         <span class="footer-title">Company</span> 
+         <a class="link link-hover">About us</a> 
+         <a class="link link-hover">Contact</a> 
+         <a class="link link-hover">Jobs</a> 
+         <a class="link link-hover">Press kit</a>
+      </div> 
+      <div>
+         <span class="footer-title">Legal</span> 
+         <a class="link link-hover">Terms of use</a> 
+         <a class="link link-hover">Privacy policy</a> 
+         <a class="link link-hover">Cookie policy</a>
+      </div> 
+      <div>
+         <span class="footer-title">Newsletter</span> 
+         <div class="form-control w-80">
+            <label class="label">
+            <span class="label-text">Enter your email address</span>
+            </label> 
+            <div class="relative">
+            <input type="text" placeholder="username@site.com" class="w-full pr-16 input input-bordered"> 
+            <button class="absolute top-0 right-0 rounded-l-none btn btn-primary">Subscribe</button>
+            </div>
          </div>
-            <p>&copy; Copyright Reserved 2021</p>
       </div>
+      </footer>
        `;
    
 };
