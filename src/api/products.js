@@ -61,3 +61,8 @@ export const getProductsByIDHavingBrandsCate = async (id) => {
         console.error(error);
     }
 };
+
+export const searchProduct = (keyword) => {
+    const url = `/products?q=${keyword}`;
+    return Axios.get(url);
+  };

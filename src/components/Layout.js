@@ -12,11 +12,11 @@ const Layout = (Content) => {
                </div>   
                
             </div>
-            <div class=""> ${Search}</div>
+            <div class=""> ${Search.render()}</div>
             <div class="menu"> ${Menu.render()}</div>
          </div>
          <div class="">${Content}</div>
-      <div class="">${Footer}</div>
+         <div class="mt-[120px]">${Footer}</div>
 `;
 
 };

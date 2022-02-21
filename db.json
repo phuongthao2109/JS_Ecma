@@ -11,24 +11,14 @@
       "id": 1
     },
     {
-      "email": "test@test.com",
-      "password": "$2a$10$AzpbgJxN6l0ppKAUgER4W.R.xZ26PFQo0thcNz1jB9k0ckG2e0Svy",
-      "username": "Test",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644942883/lgqtj5wvqkyzzqrohbhc.png",
-      "role": "user",
-      "address": "adadasdasdads",
-      "status": "hidden",
-      "id": 2
-    },
-    {
       "email": "thaotpph136wwee9@fpt.edu.vn",
-      "password": "$2a$10$ODbycoKlvMIOZxPdCg6miOk7xsJC14Xck0nOpJHVafQ2uxoTNG5o.",
+      "password": "$2a$10$N4G9YsuVI3K3BBBZXYxOR.gy8zqa3Mz29MUIl5UaoukEDGd2VncvG",
       "username": "sue",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644943972/ulcygejfgkwhbqv9slxz.png",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645359882/ncxwmiy7p0wdwxxbicpj.jpg",
       "role": "admin",
-      "address": "dsdasdas",
+      "address": "dddddddddd",
       "status": "active",
-      "id": 3
+      "id": 2
     }
   ],
   "posts": [
@@ -62,12 +52,12 @@
   ],
   "brands": [
     {
-      "name": "văn_tú",
+      "name": "Nike",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645094560/bmtaepiphfpg2qnmiagi.jpg",
       "id": 3
     },
     {
-      "name": "brand3",
+      "name": "Adidas",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645094603/wdhb4egsccebyqnwlrew.jpg",
       "id": 4
     }
@@ -86,22 +76,106 @@
   ],
   "products": [
     {
-      "name": "sp 1 asdasd",
+      "name": "product 1 ",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
       "price": "123000",
       "desc": "ahahha",
       "short_desc": "hahaha",
-      "cateProId": "2",
+      "cateProId": 2,
       "brandId": "4",
       "id": 1
+    },
+    {
+      "name": "product 2 ",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+      "price": "123000",
+      "desc": "ahahha",
+      "short_desc": "hahaha",
+      "cateProId": 3,
+      "brandId": "4",
+      "id": 2
     }
   ],
-  "cart": [
+  "orders": [
     {
-      "id": 1,
-      "productId": 1,
-      "quantity": 1,
-      "price": 123000
+      "ordercode": "nZMer",
+      "address": ";lkm j",
+      "total": "246000",
+      "status": 1,
+      "products": [
+        {
+          "name": "product 1 ",
+          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+          "price": "123000",
+          "desc": "ahahha",
+          "short_desc": "hahaha",
+          "cateProId": "3",
+          "brandId": "4",
+          "id": 1,
+          "quantity": 2
+        }
+      ],
+      "id": 1
+    },
+    {
+      "ordercode": "mXo45",
+      "address": ";lkm j",
+      "total": "369000",
+      "status": 1,
+      "products": [
+        {
+          "name": "product 1 ",
+          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+          "price": "123000",
+          "desc": "ahahha",
+          "short_desc": "hahaha",
+          "cateProId": "3",
+          "brandId": "4",
+          "id": 1,
+          "quantity": 3
+        }
+      ],
+      "id": 2
+    },
+    {
+      "ordercode": "mtYku",
+      "address": ";lkm j",
+      "total": "123000",
+      "status": 1,
+      "products": [
+        {
+          "name": "product 1 ",
+          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+          "price": "123000",
+          "desc": "ahahha",
+          "short_desc": "hahaha",
+          "cateProId": "3",
+          "brandId": "4",
+          "id": 1,
+          "quantity": 1
+        }
+      ],
+      "id": 3
+    },
+    {
+      "ordercode": "GJVOj",
+      "address": ";lkm j",
+      "total": "246000",
+      "status": 1,
+      "products": [
+        {
+          "name": "product 2 ",
+          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+          "price": "123000",
+          "desc": "ahahha",
+          "short_desc": "hahaha",
+          "cateProId": 3,
+          "brandId": "4",
+          "id": 2,
+          "quantity": 2
+        }
+      ],
+      "id": 4
     }
   ]
 }

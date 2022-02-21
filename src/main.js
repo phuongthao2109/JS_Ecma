@@ -5,13 +5,12 @@ import { Render, NoLayout, AdminRender } from "./utils/index";
 import HomePage from "./pages/homepage";
 import Products from "./pages/product/products";
 import ProductDetails from "./pages/product/productDetail";
-
+import CategoryDetails from "./pages/ProByCate";
 import SignIn from "./pages/auth/sign-in";
 import SignUp from "./pages/auth/sign-up";
 import forgetPass from "./pages/auth/forgetPass";
 import ProFile from "./pages/profile";
-
-import Blogs from "./pages/blogs"; 
+import Blogs from "./pages/blogs";
 import BlogDetail from "./pages/detailBlogs";
 
 import DashboardPage from "./pages/admin/dashboard";
@@ -34,66 +33,67 @@ import BrandsEdit from "./pages/admin/Brands/Edit";
 import CateList from "./pages/admin/Categories/List";
 import CateAdd from "./pages/admin/Categories/Add";
 import CateEdit from "./pages/admin/Categories/Edit";
-
-import Cart from "./pages/cart";
+import ListOrder from "./pages/admin/Order/List";
+import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-router.on("/admin/*", () => {}, {
-   before: (done) =>{ 
-       if(localStorage.getItem('user')){
-          
-           const userRole = JSON.parse(localStorage.getItem('user')).role;
-           if(userRole === 'admin'){
-               done();
-           } else {
-               document.location.href="/"
-           }
-       }
-   }
+router.on("/admin/*", () => { }, {
+    before: (done) => {
+        if (localStorage.getItem('user')) {
+
+            const userRole = JSON.parse(localStorage.getItem('user')).role;
+            if (userRole === 'admin') {
+                done();
+            } else {
+                document.location.href = "/"
+            }
+        }
+    }
 })
 
 router.on({
-
-   "/": () => Render(HomePage),
-   "/product": () => Render(Products),
-   "/product/:id": ({ data }) => Render(ProductDetails, data),
-   "/cart": () => Render(Cart),
-   "/blogs" : () =>Render(Blogs),
+    "/": () => Render(HomePage),
+    "/product": () => Render(Products),
+    "/product/:id": ({ data }) => Render(ProductDetails, data),
+    "/cart": () => Render(CartPage),
+    "/category/:id": ({ data }) => Render(CategoryDetails, data),
+    "/blogs": () => Render(Blogs),
     "/blogs/:id": ({ data }) => Render(BlogDetail, data),
+    "/profileUser": () => Render(ProFile),
+    //auth
+    "/signin": () => NoLayout(SignIn),
+    "/signup": () => NoLayout(SignUp),
+    "/forgetPass": () => NoLayout(forgetPass),
+    //admin
+    "/admin": () => AdminRender(DashboardPage),
+    "/admin/users": () => AdminRender(UserList),
+    "/admin/users/add": () => AdminRender(UserAdd),
+    "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data),
 
-   //auth
-   "/signin": () => NoLayout(SignIn),
-   "/signup": () => NoLayout(SignUp),
-   "/forgetPass" : () => NoLayout(forgetPass),
-   "/proFile": () => Render(ProFile),
+    "/admin/posts": () => AdminRender(PostList),
+    "/admin/posts/add": () => AdminRender(PostAdd),
+    "/admin/posts/:id/edit": ({ data }) => AdminRender(PostEdit, data),
 
-   //admin
-   "/admin": () => AdminRender(DashboardPage),
-   "/admin/users": () => AdminRender(UserList),
-   "/admin/users/add": () => AdminRender(UserAdd),
-   "/admin/users/:id/edit": ({ data }) => AdminRender(UserEdit, data),
+    "/admin/products": () => AdminRender(ProductList),
+    "/admin/products/add": () => AdminRender(ProductAdd),
+    "/admin/products/:id/edit": ({ data }) => AdminRender(ProductEdit, data),
 
-   "/admin/posts":() => AdminRender(PostList),
-   "/admin/posts/add": () => AdminRender(PostAdd),
-   "/admin/posts/:id/edit": ({ data }) => AdminRender(PostEdit, data),
-
-   "/admin/products":() => AdminRender(ProductList),
-   "/admin/products/add": () => AdminRender(ProductAdd),
-   "/admin/products/:id/edit": ({ data }) => AdminRender(ProductEdit, data),
-
-    "/admin/brands" :() => AdminRender(BrandsList),
-    "/admin/brands/add" : () => AdminRender(BrandsAdd),
+    "/admin/brands": () => AdminRender(BrandsList),
+    "/admin/brands/add": () => AdminRender(BrandsAdd),
     "/admin/brands/:id/edit": ({ data }) => AdminRender(BrandsEdit, data),
 
-    "/admin/cate" :() => AdminRender(CateList),
-    "/admin/cate/add" : () => AdminRender(CateAdd),
+    "/admin/cate": () => AdminRender(CateList),
+    "/admin/cate/add": () => AdminRender(CateAdd),
     "/admin/cate/:id/edit": ({ data }) => AdminRender(CateEdit, data),
-
     
+    "/admin/orders" : () => AdminRender(ListOrder)
+
 
 });
+
+
 router.notFound(() => NoLayout(NotFoundPage));
 router.resolve();
 

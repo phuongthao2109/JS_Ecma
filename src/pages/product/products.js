@@ -1,15 +1,24 @@
 import { getAllProducts } from "../../api/products";
 import Header from "../../components/UI/header";  
 import { setTitle } from "../../utils";
+import {getAllCate} from "../../api/Cate";
+
 const News = {
   before_render() {
     setTitle("Sản Phẩm");
   },
   async render() {
+    const cate = await getAllCate();
     return /* html */ `
+        
         <div class="my-20">
         <div class="flex flex-row justify-between my-5">
-          <h2 class="text-3xl"></h2>
+        
+        <div class="flex flex-row my-3">
+        ${cate.map(item =>{return `
+          <a class="border-gray-300 border-2 text-gray-400 rounded-md px-2 py-1 mr-2 text-xs" href="category/${item.id}">${item.name}</a>
+        `}).join("")}
+         </div>
         </div>
       <div class="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
         ${await this.productsMapping()}

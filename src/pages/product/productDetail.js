@@ -13,8 +13,6 @@ const ProductDetails = {
     let productData = await getProductsByID(id);
     this.state.data = productData;
     setTitle(this.state.data.name);
-
-
   },
 
   after_render() {

@@ -1,3 +1,4 @@
+import Axios from "../api/instance";
 let cart = [];
 if (localStorage.getItem('cart')) {
     cart = JSON.parse(localStorage.getItem('cart'));
@@ -42,6 +43,6 @@ export const removeItemInCart = (id, next) => {
     if (confirm) {
         cart = cart.filter(item => item.id !== +id);
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.remove('cart', JSON.stringify(cart));
     next()
 }

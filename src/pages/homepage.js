@@ -1,5 +1,6 @@
 import { setTitle } from "../utils/index";
 import Header from "../components/UI/header";
+import Search from "../components/UI/search";
 import Banner from '../components/UI/banner';
 import newsletter from "../components/UI/newsletter";
 import { getAllProducts } from "../api/products";
@@ -73,7 +74,7 @@ const HomePage = {
            <div class="item mt-4">
            <div class="my-20">
            <div class="flex flex-row justify-between my-5">
-             <h2 class="text-3xl">Men's Collection</h2>
+             <h2 class="text-3xl">NEW Collection</h2>
              <a href="/product" class="flex flex-row text-lg hover:text-purple-700">
                View All
                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

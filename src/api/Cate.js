@@ -42,3 +42,13 @@ export const getCateByID = async (id) => {
         console.error(error);
     }
 };
+
+export const getCateByIDHomePage = async (id) => {
+    try {
+        const { data } = await Axios.get(`/products?cateProId=${id}`);
+        return data.find((item) => item.cateProId == id);;
+    } catch (error) {
+        console.error(error);
+    }
+};
+

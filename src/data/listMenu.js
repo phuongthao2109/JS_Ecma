@@ -49,6 +49,9 @@ export const AdMenuList = [
    {
       name: "Category",
       src:"/admin/cate"
+   },{
+      name: "Orders", 
+      src:"/admin/orders"
    }
    
 ]

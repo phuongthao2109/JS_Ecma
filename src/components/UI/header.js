@@ -9,6 +9,7 @@ const Header = {
    },
    async after_render() {
       Menu.after_render();
+      Search.after_render();
    }
   
 }
