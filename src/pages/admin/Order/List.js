@@ -1,7 +1,7 @@
 import { setTitle } from "../../../utils";
 import { getAllOrders, removeOrder } from "../../../api/order";
 import toastr from "toastr";
-import "toastr/build/toastr.min.css";
+import "../../../../node_modules/toastr/build/toastr.min.css";
 const ListOrder = {
   before_render() { setTitle("LIST ORDER PAGES"); },
   async orderMapping() {
@@ -105,6 +105,10 @@ const ListOrder = {
   },
   after_render() {
     const delBtn = document.querySelectorAll(".btn-delete");
+   
+    
+
+
     delBtn.forEach((element) => {
       const id = element.dataset.id;
       element.onclick = async () => {

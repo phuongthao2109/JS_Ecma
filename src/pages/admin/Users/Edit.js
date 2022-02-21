@@ -1,6 +1,7 @@
 import { setTitle } from "../../../utils";
 import { getUsersByID, updateUsers } from "../../../api/users";
-
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import axios from "axios";
 
 const UserEdit = {
@@ -13,7 +14,7 @@ const UserEdit = {
         setTitle(`Edit: ${this.state.data.username}`);
     },
     render() {
-        const { username, image, id, role, address, status } = this.state.data;
+        const { username, image, id, role, address, status,phone } = this.state.data;
         return /*html*/ `  
       <header class="bg-white shadow">
          <div class="max-w-7x px-4 sm:px-6 lg:px-8 pb-6">
@@ -66,21 +67,26 @@ const UserEdit = {
                       <label class="block text-sm font-medium text-gray-700">Name</label>
                       <input type="text" id="username" name="username" value="${username}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
+                  <div class="mb-3">
+                            <label class="block text-sm font-medium text-gray-700">Phone</label>
+                            <input type="number" name="phone" id="phone" value="${phone}" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                   </div>
   
                     <div class="mb-3">
                         <label class="block text-sm font-medium text-gray-700">Status</label>
 
                         <select id="status" name="status"   class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
-                            <option value="0" disabled selected >Choose</option>
+                            <option value="0" disabled >Choose</option>
                             <option value="active" >Active</option>
                             <option value="hidden" >Hidden</option>
                         </select>
                     </div>
 
+
                     <div class="mb-3">
                         <label class="block text-sm font-medium text-gray-700">Role</label>
                         <select id="role" name="role" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
-                            <option value="0" disabled selected >Choose</option>
+                            <option value="0" disabled >Choose</option>
                             <option value="user" >User</option>
                             <option value="admin" >Admin</option>
                         </select>
@@ -145,8 +151,10 @@ const UserEdit = {
                 role: formEditUsers.role.value,
                 status: formEditUsers.status.value,
                 address: formEditUsers.address.value,
+                phone: formEditUsers.phone.value,
             };
             updateUsers(params).then(res => {
+                toastr.success("update successfully");
                 formEditUsers.reset();
                 document.location.href = "/admin/users";
             });

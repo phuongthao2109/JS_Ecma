@@ -6,19 +6,30 @@ import "toastr/build/toastr.min.css";
 const UserList = {
   after_render() {
     const delUserBtn = document.querySelectorAll(".btn-delete-users");
-    delUserBtn.forEach((element) => { 
+    const a = JSON.parse(localStorage.getItem("user"));
+    console.log(a);
+
+
+
+
+    delUserBtn.forEach((element) => {
       const id = element.dataset.id;
       element.onclick = async () => {
-        const confirm = window.confirm('Are you sure you want to delete?');
-        if (confirm) {
-          await deleteUsersByID(id).then(() => {
-            toastr.success("delete successfully");
-            window.location.reload();
-          });
+        if (a.id == id) {
+          toastr.warning("you can't delete yourself");
+        } else {
+          const confirm = window.confirm('Are you sure you want to delete?');
+          if (confirm) {
+            await deleteUsersByID(id).then(() => {
+              toastr.success("delete successfully");
+              window.location.reload();
+            });
+          }
         }
+
       }
     })
-   
+
   },
 
   async usersMapping() {

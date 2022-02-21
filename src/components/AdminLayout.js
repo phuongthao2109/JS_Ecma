@@ -13,9 +13,7 @@ import FooterAd from "../components/admin/footer";
                          ${Content}
                      </div>
                   </div>
-                  <div class="px-4 py-3 bg-gray-50 text-right sm:px-6 mt-[100px]">
-                     ${FooterAd.render()}
-                  <!-- /End replace -->
+               
                   </div>
                </div>
                </main>

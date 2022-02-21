@@ -1,23 +1,25 @@
 {
   "users": [
     {
-      "email": "lalisa97@gmail.com",
+      "email": "admin@gmail.com",
       "password": "$2a$10$w35/6ojmrcZmGva4NvedmOhaWRW/OWybBAu34wPtZtT2.BCBmAuGa",
       "username": "sue",
       "role": "admin",
       "status": "active",
-      "address": ";lkm j",
+      "address": "yên nghĩa, hà đông, hà nội",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1644943771/yshgfctzjl7ihm2sw98p.png",
-      "id": 1
+      "id": 1,
+      "phone": "0327072255"
     },
     {
-      "email": "thaotpph136wwee9@fpt.edu.vn",
-      "password": "$2a$10$N4G9YsuVI3K3BBBZXYxOR.gy8zqa3Mz29MUIl5UaoukEDGd2VncvG",
-      "username": "sue",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645359882/ncxwmiy7p0wdwxxbicpj.jpg",
+      "email": "userdemo@gmail.com",
+      "password": "$2a$10$13IuEt/t.NHXf6iCL3dt5e8qmMS60KKd0kbuP2W5WUkAh/vXVNuhC",
+      "username": "userdemo",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645448855/we1wuz7vpnwsjyxqggn3.png",
       "role": "admin",
-      "address": "dddddddddd",
+      "address": "110 trần phú",
       "status": "active",
+      "phone": "0327072255",
       "id": 2
     }
   ],
@@ -96,46 +98,5 @@
       "id": 2
     }
   ],
-  "orders": [
-    {
-      "ordercode": "mtYku",
-      "address": ";lkm j",
-      "total": "123000",
-      "status": 1,
-      "products": [
-        {
-          "name": "product 1 ",
-          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
-          "price": "123000",
-          "desc": "ahahha",
-          "short_desc": "hahaha",
-          "cateProId": "3",
-          "brandId": "4",
-          "id": 1,
-          "quantity": 1
-        }
-      ],
-      "id": 3
-    },
-    {
-      "ordercode": "GJVOj",
-      "address": ";lkm j",
-      "total": "246000",
-      "status": 1,
-      "products": [
-        {
-          "name": "product 2 ",
-          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
-          "price": "123000",
-          "desc": "ahahha",
-          "short_desc": "hahaha",
-          "cateProId": 3,
-          "brandId": "4",
-          "id": 2,
-          "quantity": 2
-        }
-      ],
-      "id": 4
-    }
-  ]
+  "orders": []
 }

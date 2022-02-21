@@ -53,7 +53,12 @@ const UserAdd = {
                               <label class="block text-sm font-medium text-gray-700">Name</label>
                               <input type="text" name="username" id="username" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
-          
+
+                          <div class="mb-3">
+                            <label class="block text-sm font-medium text-gray-700">Phone</label>
+                            <input type="number" name="phone" id="phone" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                          </div>
+                          
                           <div class="mb-3">
                                 <label class="block text-sm font-medium text-gray-700">Status</label>
                                 <select id="status" name="status"   class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
@@ -119,6 +124,7 @@ const UserAdd = {
                     role: formAddUsers.role.value,
                     address: formAddUsers.address.value,
                     status: formAddUsers.status.value,
+                    phone: formAddUsers.phone.value,
                 };
                 
                 createUsers(params).then(res => {

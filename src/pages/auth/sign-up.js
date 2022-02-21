@@ -22,7 +22,7 @@ const SignUp = {
                    <div class="mt-4">
                        <label class="block" for="email">Email<label>
                        <input type="text" placeholder="Email" name="email" id="email"
-                                   class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                    </div>
                    
                    <div class="mt-4">
@@ -61,6 +61,7 @@ const SignUp = {
                     status: "",
                     address:"",
                     image: "",
+                    phone : "",
 
                 });
                 if(data){
