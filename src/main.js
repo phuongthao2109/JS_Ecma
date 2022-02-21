@@ -38,7 +38,7 @@ import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import SearchPage from "./pages/search";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a" ,hash: true});
 
 router.on("/admin/*", () => { }, {
     before: (done) => {

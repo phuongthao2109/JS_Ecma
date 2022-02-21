@@ -98,5 +98,27 @@
       "id": 2
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "ordercode": "ycGtt",
+      "address": "110 trần phú",
+      "total": "123000",
+      "status": 1,
+      "products": [
+        {
+          "name": "product 2 ",
+          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+          "price": "123000",
+          "desc": "ahahha",
+          "short_desc": "hahaha",
+          "cateProId": 3,
+          "brandId": "4",
+          "id": 2,
+          "quantity": 1
+        }
+      ],
+      "phone": "",
+      "id": 1
+    }
+  ]
 }

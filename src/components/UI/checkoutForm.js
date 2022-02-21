@@ -4,6 +4,8 @@ import { addOrder } from "../../api/order";
 import CartPage from "../../pages/CartPage";
 import { reRenderUI } from "../../utils";
 import Cart from "./cart";
+import $ from "jquery";
+import jqueryValidate from "jquery-validation";
 
 const checkoutForm = {
 
@@ -62,7 +64,7 @@ const checkoutForm = {
 
             <div class="form-info">
                 <label for="name">Tổng tiền : <span id="total"></span></label>
-                <input type="hidden" id="price-total">
+                <input type="hidden" id="price-total" name="price-total" >
                 <input type="hidden" id="status" value="1">
             </div>
             <button id="checkoutBtn" class="btn btn-outline ${localStorage.getItem("cart") ? "" : "btn-disabled"} btn-info mt-4">Thanh toán</button>
@@ -83,27 +85,78 @@ const checkoutForm = {
       }
       return result;
     }
-    document.querySelector("#checkout-form").addEventListener("submit", (e) => {
+    const checkout_form = document.querySelector("#checkout-form");
+    const valid = $("#checkout_form").validate({
+      rules: {
+        email: {
+          required: true,
+          email: true,
+        },
+        password: {
+          required: true,
+          minlength: 6,
+        },
+        phone: {
+          required: true,
+          phoneUS: true
+        },
+        username: {
+          required: true,
+          minlength: 6,
+        },
+        address: {
+          required: true,
+          minlength: 15,
+        },
+        "price-total": {
+          required: true,
+        },
+        messages: {
+          email: {
+            required: "We need your email address to contact you",
+            email:
+              "Your email address must be in the format of name@domain.com",
+          },
+          password: {
+            password: "Please enter at least 6 characters.",
+            required: "This field is required.",
+          },
+          username: {
+            required: "We need your name",
+            minlength: "Give us your name",
+          },
+          address: {
+            minlength: "Give us your address",
+            required: "This field is required.",
+          },
+          total: { required: "Put some products to your cart" }
+        },
+      },
+    });
+
+
+    checkout_form.addEventListener("submit", (e) => {
       e.preventDefault();
-      
-      const newOrder = {
-        
-        ordercode: makeid(5),
-        username: document.querySelector("#username").value,
-        address: document.querySelector("#address").value,
-        total: document.querySelector("#price-total").value,
-        status: +document.querySelector("#status").value,
-        products: JSON.parse(localStorage.getItem("cart")),
-        phone: document.querySelector("#phone").value,
-      };
-      addOrder(newOrder).then(() => {
-        toastr.success("Thanh toán thành công");
-        localStorage.removeItem("cart");
-      }).then(() => {
-        reRenderUI(CartPage, "#app");
-      }).catch((error) => {
-        toastr.error(error);
-      });
+      if (valid.errorList.length === 0) {
+        const newOrder = {
+
+          ordercode: makeid(5),
+          username: document.querySelector("#username").value,
+          address: document.querySelector("#address").value,
+          total: document.querySelector("#price-total").value,
+          status: +document.querySelector("#status").value,
+          products: JSON.parse(localStorage.getItem("cart")),
+          phone: document.querySelector("#phone").value,
+        };
+        addOrder(newOrder).then(() => {
+          toastr.success("Thanh toán thành công");
+          localStorage.removeItem("cart");
+        }).then(() => {
+          reRenderUI(CartPage, "#app");
+        }).catch((error) => {
+          toastr.error(error);
+        });
+      }
     });
 
   },

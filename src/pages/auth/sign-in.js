@@ -1,7 +1,10 @@
 import { setTitle } from "../../utils/index";
 import { signin } from "../../api/auth";
+import $ from "jquery";
+import jqueryValidate from "jquery-validation";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css"
+import { rule } from "postcss";
 
 const SignIn = {
     before_render() {
@@ -60,33 +63,48 @@ const SignIn = {
     },
     after_render() {
         const formSignin = document.querySelector("#formSignin");
+        const valid = $("#formSignin").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                },
+                messages: {
+                    email: {
+                        required: "We need your email address to contact you",
+                        email:
+                            "Your email address must be in the format of name@domain.com",
+                    },
+                    password: {
+                        password: "Please enter at least 6 characters.",
+                        required: "This field is required.",
+                    },
+                },
+            },
+        });
         formSignin.addEventListener("submit", async (e) => {
             e.preventDefault();
-            try {
+            if (valid.errorList.length === 0) {
                 const { data } = await signin({
                     email: document.querySelector("#email").value,
                     password: document.querySelector("#password").value,
                 });
-                if (data) {
-                    toastr.success("login successfully, redirect after 3s")
-                    setTimeout(() => {
-                        document.location.href = "/"
-                        localStorage.setItem("user", JSON.stringify(data.user))
-                        if(data.user.role == "admin"){
-                            document.location.href="/admin"
-                        } else {
-                            document.location.href="/"
-                        }
-                    }, 3000)
-
-                }
-            } catch (error) {
-                toastr.error("Login failed", error.response.data);
+                localStorage.setItem("user", JSON.stringify(data.user));
+                toastr.success("signin successfully, redirect after 2s");
+                setTimeout(() => {
+                    if (data.user.role === 'admin') {
+                        document.location.href = "/admin";
+                    } else {
+                        document.location.href = "/";
+                    }
+                }, 2000);
             }
-        })
+        });
     }
-
-
 };
 
 export default SignIn;

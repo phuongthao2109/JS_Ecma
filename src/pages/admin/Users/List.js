@@ -2,16 +2,13 @@ import { setTitle, reRenderAdmin } from "../../../utils";
 import { getAllUsers, deleteUsersByID } from "../../../api/users";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
+import jqueryValidate from "jquery-validation";
 
 const UserList = {
   after_render() {
     const delUserBtn = document.querySelectorAll(".btn-delete-users");
     const a = JSON.parse(localStorage.getItem("user"));
     console.log(a);
-
-
-
-
     delUserBtn.forEach((element) => {
       const id = element.dataset.id;
       element.onclick = async () => {

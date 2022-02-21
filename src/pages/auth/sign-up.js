@@ -1,7 +1,9 @@
 import { setTitle } from "../../utils/index";
 import { signup } from "../../api/auth";
 import toastr from "toastr";
-import "toastr/build/toastr.min.css"
+import "toastr/build/toastr.min.css";
+import $ from "jquery";
+import jqueryValidate from "jquery-validation";
 
 const SignUp = {
     before_render() {
@@ -30,8 +32,6 @@ const SignUp = {
                        <input type="password" placeholder="Password" name="password" id="password"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                    </div>
-
-                   <span class="text-xs text-red-400">Password must be same!</span>
                    <div class="flex">
                        <button id="btn-save-users" class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Create
                            Account</button>
@@ -50,28 +50,62 @@ const SignUp = {
     },
     after_render() {
         const formSignup = document.querySelector("#formSignup");
+        const valid = $("#formSignup").validate({
+            rules: {
+                username:{
+                    required: true,
+                    minlength: 6,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                },
+                messages: {
+                    username:{
+                        minlength: "Please enter at least 6 characters.",
+                        required: "This field is required.",
+                    },
+                    email: {
+                        required: "We need your email address to contact you",
+                        email:
+                            "Your email address must be in the format of name@domain.com",
+                    },
+                    password: {
+                        password: "Please enter at least 6 characters.",
+                        required: "This field is required.",
+                    },
+                },
+            },
+        });
+
         formSignup.addEventListener("submit", async (e) => {
             e.preventDefault();
-            try {
-                const { data } = await signup({
-                    username: document.querySelector("#username").value,
-                    email: document.querySelector("#email").value,
-                    password: document.querySelector("#password").value,
-                    role: "user", 
-                    status: "",
-                    address:"",
-                    image: "",
-                    phone : "",
+            if (valid.errorList.length === 0) {
+                try {
+                    const { data } = await signup({
+                        username: document.querySelector("#username").value,
+                        email: document.querySelector("#email").value,
+                        password: document.querySelector("#password").value,
+                        role: "user", 
+                        status: "",
+                        address:"",
+                        image: "",
+                        phone : "",
 
-                });
-                if(data){
-                    toastr.success("signup successfully, redirect after 3s")
-                    setTimeout(() =>{
-                        document.location.href = "/signin"
-                    },3000)
+                    });
+                    if(data){
+                        toastr.success("signup successfully, redirect after 3s")
+                        setTimeout(() =>{
+                            document.location.href = "/signin"
+                        },3000)
+                    }
+                } catch (error) {
+                    toastr.error("Login failed",error.response.data);
                 }
-            } catch (error) {
-                toastr.error("Login failed",error.response.data);
             }
         })
     }

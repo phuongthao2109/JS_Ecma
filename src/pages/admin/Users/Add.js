@@ -1,6 +1,8 @@
 import { setTitle } from "../../../utils";
 import { createUsers } from "../../../api/users";
 import axios from "axios";
+import $ from "jquery";
+import jqueryValidate from "jquery-validation";
 const UserAdd = {
     before_render() {
         setTitle("UserAdd");
@@ -36,7 +38,7 @@ const UserAdd = {
                               <label class="block text-sm font-medium text-gray-700">
                               Image ID
                               </label>
-                              <input name="image" id="image_users" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
+                              <input name="image_users" id="image_users" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="file"/>
                           </div>
                               
                           <div class="mb-3">
@@ -56,12 +58,12 @@ const UserAdd = {
 
                           <div class="mb-3">
                             <label class="block text-sm font-medium text-gray-700">Phone</label>
-                            <input type="number" name="phone" id="phone" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <input  name="phone" id="phone" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                           </div>
                           
                           <div class="mb-3">
                                 <label class="block text-sm font-medium text-gray-700">Status</label>
-                                <select id="status" name="status"   class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
+                                <select id="status" name="status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"">
                                     <option value="0" disabled selected >Choose</option>
                                     <option value="active" >Active</option>
                                     <option value="hidden" >Hidden</option>
@@ -97,42 +99,91 @@ const UserAdd = {
     after_render() {
         const formAddUsers = document.querySelector("#formAddUsers");
         const buttonSave = document.querySelector("#btn-save-users");
+        const valid = $("#formAddUsers").validate({
+            rules: {
+                email: {
+                  required: true,
+                  email: true,
+                },
+                password: {
+                  required: true,
+                  minlength: 6,
+                },
+                phone: {
+                  required: true,
+                  phoneUS: true
+                },
+                username: {
+                  required: true,
+                  minlength: 6,
+                },
+                address: {
+                  required: true,
+                  minlength: 15,
+                },
+                messages: {
+                  email: {
+                    required: "We need your email address to contact you",
+                    email:
+                      "Your email address must be in the format of name@domain.com",
+                  },
+                  password: {
+                    password: "Please enter at least 6 characters.",
+                    required: "This field is required.",
+                  },
+                  username: {
+                    required: "We need your name",
+                    minlength: "Give us your name",
+                  },
+                  address: {
+                    minlength: "Give us your address",
+                    required: "This field is required.",
+                  },
+                  phone: {
+                    required: "This field is required.",
+                    phoneUS: "wrong phone number"
+                  }
+                },
+              },
+        });
+
+
 
         const CLOUDINARY_API = " https://api.cloudinary.com/v1_1/asm-ph13269/image/upload";
         const CLOUDINARY_PRESET = "m1lkf3uy";
 
         const userImage = document.querySelector("#image_users");
+        if (valid.errorList.length === 0) {
+            buttonSave.onsubmit = function () {
+                let file = userImage.files[0];
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
 
-        buttonSave.onclick = function () {
-            let file = userImage.files[0];
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
+                //call api
+                axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    }
+                }).then(res => {
 
-            //call api
-            axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                }
-            }).then(res => {
-
-                let params = {
-                    username: formAddUsers.username.value,
-                    image: res.data.url,
-                    email: formAddUsers.email.value,
-                    password: formAddUsers.password.value,
-                    role: formAddUsers.role.value,
-                    address: formAddUsers.address.value,
-                    status: formAddUsers.status.value,
-                    phone: formAddUsers.phone.value,
-                };
-                
-                createUsers(params).then(res => {
-                    formAddUsers.reset();
-                    document.location.href = "/admin/users";    
+                    let params = {
+                        username: formAddUsers.username.value,
+                        image: res.data.url,
+                        email: formAddUsers.email.value,
+                        password: formAddUsers.password.value,
+                        role: formAddUsers.role.value,
+                        address: formAddUsers.address.value,
+                        status: formAddUsers.status.value,
+                        phone: formAddUsers.phone.value,
+                    };
+                    
+                    createUsers(params).then(res => {
+                        formAddUsers.reset();
+                        document.location.href = "/admin/users";    
+                    })
                 })
-            })
-            
+            }
         }
 
 
