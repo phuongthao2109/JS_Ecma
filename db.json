@@ -98,46 +98,6 @@
   ],
   "orders": [
     {
-      "ordercode": "nZMer",
-      "address": ";lkm j",
-      "total": "246000",
-      "status": 1,
-      "products": [
-        {
-          "name": "product 1 ",
-          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
-          "price": "123000",
-          "desc": "ahahha",
-          "short_desc": "hahaha",
-          "cateProId": "3",
-          "brandId": "4",
-          "id": 1,
-          "quantity": 2
-        }
-      ],
-      "id": 1
-    },
-    {
-      "ordercode": "mXo45",
-      "address": ";lkm j",
-      "total": "369000",
-      "status": 1,
-      "products": [
-        {
-          "name": "product 1 ",
-          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
-          "price": "123000",
-          "desc": "ahahha",
-          "short_desc": "hahaha",
-          "cateProId": "3",
-          "brandId": "4",
-          "id": 1,
-          "quantity": 3
-        }
-      ],
-      "id": 2
-    },
-    {
       "ordercode": "mtYku",
       "address": ";lkm j",
       "total": "123000",

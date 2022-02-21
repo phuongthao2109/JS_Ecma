@@ -36,6 +36,7 @@ import CateEdit from "./pages/admin/Categories/Edit";
 import ListOrder from "./pages/admin/Order/List";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import SearchPage from "./pages/search";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -62,7 +63,8 @@ router.on({
     "/blogs": () => Render(Blogs),
     "/blogs/:id": ({ data }) => Render(BlogDetail, data),
     "/profileUser": () => Render(ProFile),
-    //auth
+    "/searchResult" : () => Render(SearchPage),
+    //auth 
     "/signin": () => NoLayout(SignIn),
     "/signup": () => NoLayout(SignUp),
     "/forgetPass": () => NoLayout(forgetPass),

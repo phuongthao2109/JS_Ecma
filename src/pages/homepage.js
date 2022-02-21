@@ -1,9 +1,11 @@
 import { setTitle } from "../utils/index";
 import Header from "../components/UI/header";
-import Search from "../components/UI/search";
+// import Search from "../components/UI/search";
 import Banner from '../components/UI/banner';
 import newsletter from "../components/UI/newsletter";
 import { getAllProducts } from "../api/products";
+import SearchPage from "./search";
+// import resultSearch from "../components/UI/resultSearch";
 
 const HomePage = {
   before_render() { },
@@ -70,6 +72,7 @@ const HomePage = {
            <div class="mt-4">
              ${Banner}
            </div>
+           <div id="result" class="result bg-slate-100 shadow-xl z-50">
 
            <div class="item mt-4">
            <div class="my-20">

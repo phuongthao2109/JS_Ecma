@@ -43,6 +43,6 @@ export const removeItemInCart = (id, next) => {
     if (confirm) {
         cart = cart.filter(item => item.id !== +id);
     }
-    localStorage.remove('cart', JSON.stringify(cart));
+    localStorage.removeItem('cart', JSON.stringify(cart));
     next()
 }

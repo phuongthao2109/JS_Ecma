@@ -16,7 +16,7 @@ const Layout = (Content) => {
             <div class="menu"> ${Menu.render()}</div>
          </div>
          <div class="">${Content}</div>
-         <div class="mt-[120px]">${Footer}</div>
+         <div class="mt-[340px]">${Footer}</div>
 `;
 
 };

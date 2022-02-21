@@ -1,13 +1,13 @@
 import { setTitle } from "../../../utils";
-import { getAllOrders } from "../../../api/order";
-
+import { getAllOrders, removeOrder } from "../../../api/order";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 const ListOrder = {
   before_render() { setTitle("LIST ORDER PAGES"); },
-  async  orderMapping() {
+  async orderMapping() {
     let orderHtml = "";
     try {
-      const {data} =await getAllOrders();
-      console.log(data);
+      const { data } = await getAllOrders();
       orderHtml = data.map((item) => {
         return /* html */ `
         <td class="px-6 py-4 whitespace-nowrap">
@@ -20,19 +20,29 @@ const ListOrder = {
         </div>
       </td>
         <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-smq text-gray-900 ml-4" name="price" id="price">${item.total}</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-smq text-gray-900 ml-4" name="price" id="price">${item.total}</div>
+        </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-smq text-gray-900 ml-4" name="price" id="price">${item.total}</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
         <div class="text-smq text-gray-900 ml-4" name="price" id="price">${item.total}</div>
+      </td>
       <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
           <a href="/admin/orders/${item.id}/edit" class="bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>
-          <button class="btn-delete-orders bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white" data-id=${item.id}>Delete</button>
+          <button class="btn-delete bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white" data-id=${item.id}>Delete</button>
       </td>
    </tr>
         `;
       }).join("");
     } catch (e) {
       console.error(e);
-   }
+    }
     return orderHtml;
-  
+
   },
   async render() {
 
@@ -71,6 +81,9 @@ const ListOrder = {
                            <tr>
                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Code</th>
                              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Price</th>
+                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Products</th>
+                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
+                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created day</th>
                              <th scope="col" class="relative px-6 py-3">
                                <span class="sr-only">Edit</span>
                              </th>
@@ -90,6 +103,23 @@ const ListOrder = {
          `
 
   },
-  after_render() { }
+  after_render() {
+    const delBtn = document.querySelectorAll(".btn-delete");
+    delBtn.forEach((element) => {
+      const id = element.dataset.id;
+      element.onclick = async () => {
+        const confirm = window.confirm('Are you sure you want to delete?');
+        if (confirm) {
+          await removeOrder(id).then(() => {
+            toastr.success("delete successfully");
+            window.location.reload();
+          });
+        }
+      }
+    })
+
+
+
+  }
 }
 export default ListOrder;

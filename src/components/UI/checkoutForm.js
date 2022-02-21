@@ -22,6 +22,10 @@ const checkoutForm = {
                   <input type="text" id="address" placeholder="Nhập địa chỉ giao hàng" value="${localUser.address}" class="input input-bordered input-sm w-full max-w-xs>
               </div>
               <div class="form-info">
+                <label for="address">Điện thoại</label><br>
+                <input type="number" id="phone" placeholder="Nhập địa chỉ giao hàng"  class="input input-bordered input-sm w-full max-w-xs>
+              </div>
+              <div class="form-info">
                   <label for="email">Email</label><br>
                   <input type="email" id="email" placeholder="Nhập địa chỉ email" value="${localUser.email}" class="input input-bordered input-sm w-full max-w-xs>
               </div>
@@ -31,7 +35,7 @@ const checkoutForm = {
                   <input type="hidden" id="price-total">
                   <input type="hidden" id="status" value="1">
               </div>
-              <button id="checkoutBtn" class="btn btn-outline btn-info mt-4">Thanh toán</button>
+              <button id="checkoutBtn" class="btn btn-outline ${localStorage.getItem("cart") ? "" : "btn-disabled"}  btn-info mt-4">Thanh toán</button>
           </form>
       `;
     } else {
@@ -48,6 +52,10 @@ const checkoutForm = {
                 <input type="text" id="address" placeholder="Nhập địa chỉ giao hàng"  class="input input-bordered input-sm w-full max-w-xs>
             </div>
             <div class="form-info">
+              <label for="address">Điện thoại</label><br>
+              <input type="number" id="phone" placeholder="Nhập địa chỉ giao hàng"  class="input input-bordered input-sm w-full max-w-xs>
+          </div>
+            <div class="form-info">
                 <label for="email">Email</label><br>
                 <input type="email" id="email" placeholder="Nhập địa chỉ email" class="input input-bordered input-sm w-full max-w-xs>
             </div>
@@ -57,7 +65,7 @@ const checkoutForm = {
                 <input type="hidden" id="price-total">
                 <input type="hidden" id="status" value="1">
             </div>
-            <button id="checkoutBtn" class="btn btn-outline btn-info mt-4">Thanh toán</button>
+            <button id="checkoutBtn" class="btn btn-outline ${localStorage.getItem("cart") ? "" : "btn-disabled"} btn-info mt-4">Thanh toán</button>
         </form>
     `;
 
@@ -86,6 +94,7 @@ const checkoutForm = {
         total: document.querySelector("#price-total").value,
         status: +document.querySelector("#status").value,
         products: JSON.parse(localStorage.getItem("cart")),
+        phone: document.querySelector("#phone").value,
       };
       addOrder(newOrder).then(() => {
         toastr.success("Thanh toán thành công");
