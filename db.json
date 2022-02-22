@@ -100,10 +100,12 @@
   ],
   "orders": [
     {
-      "ordercode": "ycGtt",
+      "ordercode": "bD4JN",
+      "name_user": "this is name",
+      "userId": 2,
       "address": "110 trần phú",
-      "total": "123000",
-      "status": 1,
+      "total": "369000",
+      "status": "not approved yet",
       "products": [
         {
           "name": "product 2 ",
@@ -114,10 +116,12 @@
           "cateProId": 3,
           "brandId": "4",
           "id": 2,
-          "quantity": 1
+          "quantity": 3
         }
       ],
-      "phone": "",
+      "phone": "0327072255",
+      "day": "2022-02-22T13:47:21.788Z",
+      "email": "userdemo@gmail.com",
       "id": 1
     }
   ]

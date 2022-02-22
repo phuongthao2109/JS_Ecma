@@ -34,6 +34,7 @@ import CateList from "./pages/admin/Categories/List";
 import CateAdd from "./pages/admin/Categories/Add";
 import CateEdit from "./pages/admin/Categories/Edit";
 import ListOrder from "./pages/admin/Order/List";
+import EditOrder from "./pages/admin/Order/Edit";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import SearchPage from "./pages/search";
@@ -90,7 +91,8 @@ router.on({
     "/admin/cate/add": () => AdminRender(CateAdd),
     "/admin/cate/:id/edit": ({ data }) => AdminRender(CateEdit, data),
     
-    "/admin/orders" : () => AdminRender(ListOrder)
+    "/admin/orders" : () => AdminRender(ListOrder),
+    "/admin/order/:id/edit" : () => AdminRender(EditOrder)
 
 
 });

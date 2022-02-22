@@ -24,7 +24,6 @@ const ProductDetails = {
 
     btnAddTocart.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("a",data);
       addToCart(
         { ...data, quantity: inputValue.value ? +inputValue.value : 1 }, function () {
           toastr.success(`Thêm ${data.name}vào giỏ hàng thành công!`);
@@ -274,7 +273,7 @@ const ProductDetails = {
                     </fieldset>
                   </div>
                   <div class="flex gap-1 mb-5 items-center mt-5">
-                    <input type="number" id="inputValue"  class="h-[40px] pl-2 focus:outline-0 cursor-pointer border" value="1">
+                    <input type="number" id="inputValue" min="0"  class="h-[40px] pl-2 focus:outline-0 cursor-pointer border" value="1">
                     <button id="addToCart"class="uppercase ml-4 bg-black/[.9] text-white h-[40px] px-5 pt-[2px]">ADD TO CART</button>
                   </div>
                 </form>

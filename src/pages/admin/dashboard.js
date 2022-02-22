@@ -4,7 +4,7 @@ import { getAllBrand } from "../../api/Brand";
 import { getAllUsers } from "../../api/users";
 import { getAllPost } from "../../api/posts";
 import { getAllProducts } from "../../api/products";
-import { getAllOrders } from "../../api/order";
+import { list } from "../../api/order";
 const DashboardPage = {
     before_render() {
         setTitle("Dashboard");
@@ -14,7 +14,7 @@ const DashboardPage = {
         const brand = await getAllBrand();
         const users = await getAllUsers();
         const products = await getAllProducts();
-        const orders = await getAllOrders();
+        const orders = await list();
         console.log(orders.data.length);
         const post = await getAllPost();
         return /* html */`

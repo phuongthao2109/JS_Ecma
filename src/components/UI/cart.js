@@ -28,7 +28,7 @@ const Cart = {
                 <td class="px-6 py-4 whitespace-nowrap capitalize"><a href="#/productDetail/${item.id}"><h1>${item.name}</h1></a></td>
                 <td class="px-6 py-4 whitespace-nowrap" class="px-4">${item.price}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap" class="px-4">${item.quantity}</td>
+                <td class="px-6 py-4 whitespace-nowrap" class="px-4" class="quantity">${item.quantity}</td>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     <button  data-id="${item.id}" class="btn increase btn-active btn-accent"><i class="fa fa-plus " aria-hidden="true"></i></button>
@@ -47,7 +47,9 @@ const Cart = {
 
     const cart = JSON.parse(localStorage.getItem("cart"));
     const btns = document.querySelectorAll(".btn");
+
     let total = 0;
+
     const totalCount = () => {
       for (const item of cart) {
         total += (item.price) * (+item.quantity);
@@ -64,18 +66,18 @@ const Cart = {
       btn.addEventListener("click", () => {
         if (btn.classList.contains("increase")) {
           increaseQuantity(id, () => {
-            reRenderUI(Cart, "#app");
+            reRenderUI(Cart, "#table-post");
           });
 
         } else if (btn.classList.contains("decrease")) {
           decreaseQuantity(id, () => {
-            reRenderUI(Cart, "#app");
+            reRenderUI(Cart, "#table-post");
           });
 
         } else if (btn.classList.contains("remove")) {
           removeItemInCart(id, () => {
             toastr.success("Bạn đã xóa sản phẩm thành công");
-            reRenderUI(Cart, "#app");
+            reRenderUI(Cart, "#table-post");
           });
         }
       });
