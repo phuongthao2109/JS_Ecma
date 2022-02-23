@@ -38,7 +38,9 @@ import EditOrder from "./pages/admin/Order/Edit";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import SearchPage from "./pages/search";
-
+import ListBanner from "./pages/admin/Banner/List";
+import BannerAdd from "./pages/admin/Banner/Add";
+import BannerEdit from "./pages/admin/Banner/Edit";
 const router = new Navigo("/", { linksSelector: "a" ,hash: true});
 
 router.on("/admin/*", () => { }, {
@@ -92,7 +94,10 @@ router.on({
     "/admin/cate/:id/edit": ({ data }) => AdminRender(CateEdit, data),
     
     "/admin/orders" : () => AdminRender(ListOrder),
-    "/admin/order/:id/edit" : () => AdminRender(EditOrder)
+    "/admin/order/:id/edit" : ({ data }) => AdminRender(EditOrder,data),
+    "/admin/banners" : () => AdminRender(ListBanner),
+    "/admin/banners/add" : () => AdminRender(BannerAdd),
+    "/admin/banners/:id/edit" : ({ data }) => AdminRender(BannerEdit,data),
 
 
 });

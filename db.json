@@ -66,27 +66,17 @@
   ],
   "catePros": [
     {
-      "id": 2,
-      "name": "MEN",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645097091/alwr3au7ibenmfinklfe.png"
-    },
-    {
       "name": "WOMAN",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645115744/xoo1bhgtq4h60tg38z6m.png",
       "id": 3
+    },
+    {
+      "name": "MEN",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645595509/trcnfsohvu9eu1jt7zaq.jpg",
+      "id": 4
     }
   ],
   "products": [
-    {
-      "name": "product 1 ",
-      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
-      "price": "123000",
-      "desc": "ahahha",
-      "short_desc": "hahaha",
-      "cateProId": 2,
-      "brandId": "4",
-      "id": 1
-    },
     {
       "name": "product 2 ",
       "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
@@ -100,11 +90,11 @@
   ],
   "orders": [
     {
-      "ordercode": "bD4JN",
-      "name_user": "this is name",
+      "ordercode": "QVYwf",
+      "name_user": "sue",
       "userId": 2,
       "address": "110 trần phú",
-      "total": "369000",
+      "total": "492000",
       "status": "not approved yet",
       "products": [
         {
@@ -116,13 +106,36 @@
           "cateProId": 3,
           "brandId": "4",
           "id": 2,
-          "quantity": 3
+          "quantity": 2
+        },
+        {
+          "name": "product 1 ",
+          "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645113190/gydxitcxwbu28tazanoz.png",
+          "price": "123000",
+          "desc": "ahahha",
+          "short_desc": "hahaha",
+          "cateProId": 2,
+          "brandId": "4",
+          "id": 1,
+          "quantity": 2
         }
       ],
       "phone": "0327072255",
-      "day": "2022-02-22T13:47:21.788Z",
+      "day": "2022-02-23T04:53:52.255Z",
       "email": "userdemo@gmail.com",
       "id": 1
+    }
+  ],
+  "banners": [
+    {
+      "name": "Banner222",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645595730/cyvd4gquijzpue03wwwb.jpg",
+      "id": 1
+    },
+    {
+      "name": "banner2",
+      "image": "http://res.cloudinary.com/asm-ph13269/image/upload/v1645596036/dafnzqiop1nzapoxscmb.jpg",
+      "id": 2
     }
   ]
 }

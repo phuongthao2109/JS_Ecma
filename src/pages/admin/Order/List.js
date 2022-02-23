@@ -13,8 +13,7 @@ import { reRenderUI } from "../../../utils";
 const ListOrder = {
   async render() {
     const { data } = await list();
-    console.log(data);
-
+    console.log("data", data);
     return /* html */ `
         <div class="w-full min-h-screen font-sans text-gray-900 bg-gray-50 flex">
       <main class="flex-1 pb-8">
@@ -23,7 +22,7 @@ const ListOrder = {
           <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Orders</h1>
           <div class="grid grid-cols-4">
             <div >
-              <p>Name&Phone&Email&Address</p>
+              <p>Search bar </p>
               <input id="search-order" class="border border-gray-200 py-3 px-4 w-62" />
             </div>
              <div class="px-8 ">
@@ -121,7 +120,7 @@ const ListOrder = {
           >
             
             <td class="font-medium text-center">${index + 1}</td>
-            <td class="font-medium text-center">${element.ordercode}</td>
+            <td class="font-medium text-center"><a href="/admin/order/${element.id}/edit" >${element.ordercode}</a></td>
             <td class="text-center">
               ${element.phone}
             </td>
@@ -144,10 +143,20 @@ const ListOrder = {
             }" class="status border-2 border-blue-400 border-opacity-100 rounded-lg text-blue-700">
                 ${statusTable()}
             </select></div></td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              <a href="/admin/order/${element.id}/edit" class=" list-cart-btn  bg-indigo-600 hover:bg-indigo-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white">Edit</a>
-              <button class="list-cart-btn bg-red-600 hover:bg-red-700 border border-transparent text-[14px] shadow-sm py-1 px-3 rounded-md text-white"data-id=${element.id}>Delete</button>
-            </td>
+            <td>
+            <button class="list-cart-btn" data-id=${element.id} >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 fill-red-600 '"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"  />
+               </svg>
+            </button>
+           
+           </td>
+            <td>
+            <a href="/admin/order/${element.id}/edit">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                 </svg>
+            </button>
           </tr>
             `;
         })
@@ -166,18 +175,8 @@ const ListOrder = {
         </button>
       </div>
     </main>
-    
-    
-    
-    
-   
-  
 
-   
   </div>
-
-
-
        `;
   },
   after_render() {
@@ -228,58 +227,59 @@ const ListOrder = {
   renderOrder(data) {
     return /* html */ `
         ${data
-        .map((element, index) => {
-          const statusTable = () => {
-            if (element.status == "not approved yet") {
-              return /*html*/ `
+          .map((element, index) => {
+            const statusTable = () => {
+              if (element.status == "not approved yet") {
+                return /*html*/ `
                     <option value="${element.status}" selected>${element.status}</option>
                     <option value="approved">approved</option>
                     <option value="delivered">delivered</option>
                     <option value="cancelled">cancelled</option>
                     `;
-            } else if (element.status == "approved") {
-              return /*html*/ `
+              } else if (element.status == "approved") {
+                return /*html*/ `
                     <option value="approved" selected>approved</option>
                     <option value="delivered">delivered</option>
                     <option value="cancelled">cancelled</option>
                     `;
-            } else if (element.status == "delivered") {
-              return /*html*/ `
+              } else if (element.status == "delivered") {
+                return /*html*/ `
                     <option value="delivered" selected>delivered</option>
                     <option value="cancelled">cancelled</option>
                     `;
-            } else {
-              return ` <option value="cancelled" selected>cancelled</option>`;
-            }
-          };
-          return /* html */ `
+              } else {
+                return ` <option value="cancelled" selected>cancelled</option>`;
+              }
+            };
+            return /* html */ `
             <tr
             v-for="product in products"
             class="hover:bg-gray-100 transition-colors group"
           >
             
             <td class="font-medium text-center">${index + 1}</td>
-            <td class="font-medium text-center">${element.ordercode}</td>
+            <td class="font-medium text-center">${element.name}</td>
             <td class="text-center">
               ${element.phone}
             </td>
             <td class="font-medium text-center">
-             ${element.name_user}
+             ${element.email}
             </td>
               <td class="font-medium text-center">
              ${element.address}
             </td>
            
               <td class="font-medium text-center">
-             ${element.total}
+             ${element.totalMoney}
             </td>
              </td>
               <td class="font-medium text-center">
              ${element.day}
             </td>
              <td ><div class="selectorid">
-              <select data-id="${element.id
-            }" class="status border-2 border-blue-400 border-opacity-100 rounded-lg text-blue-700">
+              <select data-id="${
+                element.id
+              }" class="status border-2 border-blue-400 border-opacity-100 rounded-lg text-blue-700">
                 ${statusTable()}
             </select></div></td>
             
@@ -293,7 +293,7 @@ const ListOrder = {
             
             </td>
              <td>
-             <a href="/admin/order/${element.id}/edit">
+             <a href="/editorder/${element.id}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
@@ -302,10 +302,11 @@ const ListOrder = {
             </td>
           </tr>
             `;
-        })
-        .join("")}
+          })
+          .join("")}
           `;
   },
+ 
   before_render() { setTitle("Order List Page") }
 };
 

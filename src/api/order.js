@@ -20,14 +20,41 @@ export const update = (id, data) => {
   const url = `orders/${id}`;
   return Axios.put(url, data);
 };
-export const getOrder = (id) => {
-  const url = `orders/${id}`;
-  return Axios.get(url);
+
+export const getOrder = async (id) => {
+  try {
+    const { data } = await Axios.get("/orders");
+    return data.find((item) => item.id == id);
+  } catch (error) {
+    console.error(error);
+  }
 };
-export const updateOrder = (id, data) => {
-  const url = `orders/${id}`;
-  return Axios.put(url, data);
+
+export const getOrderByProduct = async (productId) => {
+  try {
+    const { data } = await Axios.get("/orders");
+    return data.filter((item) => item.id !== productId);
+
+  } catch (error) {
+    console.error(error);
+  }
 };
+
+// export const updateOrder = (id, data) => {
+//   const url = `orders/${id}`;
+//   return Axios.put(url, data);
+// };
+export const updateOrder = async (params) => {
+  try {
+    const response = await Axios.patch(`/orders/${params.id}`, params);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
 export const remove = (id) => {
   const url = `orders/${id}`;
   return Axios.delete(url);
@@ -45,6 +72,6 @@ export const sortOrderStatus = (sortType) => {
 
 export const sortOrderTotal = (sortType) => {
   console.log("Sort by: ", sortType);
-  const url = `orders?_sort=totalMoney&_order=${sortType}`;
+  const url = `orders?_sort=total&_order=${sortType}`;
   return Axios.get(url);
 };

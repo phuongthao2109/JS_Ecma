@@ -12,6 +12,7 @@ const HomePage = {
   after_render() {
     setTitle("Trang chủ");
     Header.after_render();
+    Banner.after_render();
   },
 
   async productsMapping() {
@@ -70,7 +71,7 @@ const HomePage = {
  async render() {
     return /* html */ `
            <div class="mt-4">
-             ${Banner}
+             ${await Banner.render()}
            </div>
            <div id="result" class="result bg-slate-100 shadow-xl z-50">
 
